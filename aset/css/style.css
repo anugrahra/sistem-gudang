@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #fff;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+#bodylogin {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+#mainlogin {
+  flex: 1 0 auto;
+}
+
+.input-field input[type=text]:focus + label,
+.input-field input[type=password]:focus + label {
+  color: #e91e63;
+}
+
+.input-field input[type=text]:focus,
+.input-field input[type=password]:focus {
+  border-bottom: 2px solid #e91e63;
+  box-shadow: none;
+}
+
+footer  {
+  padding: 10px;
+}
