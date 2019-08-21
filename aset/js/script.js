@@ -36,6 +36,18 @@ function tampilkan_cari(){
   $('.tampilkanCari').toggle("slow");
 }
 
+function tampilkan_cariHome() {
+  $('.tampilkanCariHome').toggle("slow");
+}
+
+function tampilkan_pemesanan() {
+  $('.tampilkanPemesanan').toggle("slow");
+}
+
+function tampilkan_pilihLaporan() {
+  $('.tampilkanPilihLaporan').toggle("slow");
+}
+
 function tampilkan_listPenerimaan(){
 	$('.tampilkanListPenerimaan').toggle("slow");
 }

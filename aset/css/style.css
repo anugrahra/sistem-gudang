@@ -35,6 +35,10 @@ main {
   box-shadow: none;
 }
 
+.lang {
+  font-style: italic;
+}
+
 footer  {
   padding: 10px;
 }

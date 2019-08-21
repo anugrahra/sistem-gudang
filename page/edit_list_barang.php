@@ -15,6 +15,7 @@
       require_once "../fungsi/fungsi.php";
 
       $id = $_GET['id'];
+      $error = '';
 
       //SETTING FUNGSI
       $jenis_barang = tampilkan_jenis_barang();

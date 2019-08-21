@@ -136,7 +136,7 @@
           <div class="row">
             <div class="col s12">
               <div class="input-field col s6">
-                <label for="keterangan">Keterangan Pengeluaran</label>
+                <label for="keterangan">Keterangan Kehilangan</label>
                 <input name="keterangan" type="text" class="validate">
               </div>
             </div>

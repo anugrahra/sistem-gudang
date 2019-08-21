@@ -21,21 +21,21 @@
 			//SUBMIT DATA KE FUNGSI TAMBAH_USER
 			if(isset($_POST['submit'])){
 				$username   = $_POST['username'];
-        $password   = $_POST['password'];
-        $repassword = $_POST['repassword'];
-        $level      = $_POST['level'];
+				$password   = $_POST['password'];
+				$repassword = $_POST['repassword'];
+				$level      = $_POST['level'];
 
 				//MENGIRIM DATA SUPPLIER KE DATABASE
 				if(!empty($username) && !empty($password)  && !empty($repassword) && !empty($level)){
-          if($password == $repassword){
-            if(tambah_user($username, $password, $level)){
-              header('location: list_user.php');
-            }else{
-              echo "<script>alert('Ada masalah ketika menambah data user!');</script>";
-            } 
-          }else{
-          	echo "<script>alert('Password tidak cocok!');</script>";
-          }
+					if($password == $repassword){
+						if(tambah_user($username, $password, $level)){
+							header('location: list_user.php');
+						}else{
+							echo "<script>alert('Ada masalah ketika menambah data user!');</script>";
+						}
+					}else{
+						echo "<script>alert('Password tidak cocok!');</script>";
+					}
 				}else{
 					echo "<script>alert('Data tidak boleh kosong!');</script>";
 				}
@@ -116,25 +116,27 @@
 								</tr>
 							</thead>
 							<tbody>
-								<?php while($row = mysqli_fetch_assoc($user)):
+								<?php
+								$sembunyi = 'anjing';
+						        if ($_SESSION['level'] === '1'){
+									$sembunyi = '';
+								} else {
+									$sembunyi = 'none';
+								}
+
+								while($row = mysqli_fetch_assoc($user)):
 									if($row['level'] == 1){
 										$level = 'Super Admin';
 									}else{
 										$level = 'Regular Admin';
 									}
-									$sembunyi = '';
-									// if($_SESSION['level'] > 1){
-									// 	$sembunyi = 'style="display: none;"';
-									// }else{
-									// 	$sembunyi = '';
-									// }
 								?>
 								<tr>
 									<td><?=$nourut++;?></td>
 									<td><?=$row['username'];?></td>
-                 	<td><?=$level;?></td>
-                 	<td><a href="edit_list_user.php?id=<?=$row['id'];?>"<?=$sembunyi;?>>Edit</a></td>
-                 	<td><a href="hapus_user.php?id=<?=$row['id'];?>" class="red-text" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')" <?=$sembunyi;?>>Hapus</a></td>
+									<td><?=$level;?></td>
+									<td><a href="edit_list_user.php?id=<?=$row['id'];?>" style="display: <?=$sembunyi;?>;">Edit</a></td>
+									<td><a href="hapus_user.php?id=<?=$row['id'];?>" class="red-text" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')"  style="display: <?=$sembunyi;?>;">Hapus</a></td>
 								</tr>
 								<?php endwhile; ?>
 							</tbody>
