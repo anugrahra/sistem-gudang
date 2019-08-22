@@ -38,7 +38,7 @@
           </div>
         </div>
 
-        <form action="" method="get" class="tampilkanCariHome z-depth-1" style="display: none;">
+        <form action="list_barang.php" method="get" class="tampilkanCariHome z-depth-1" style="display: none;">
           <div class="row">
             <div class="col s12">  
               <div class="input-field col s6">
@@ -55,7 +55,7 @@
           <div class="row">
             <div class="col s12">  
               <div class="input-field col s6">
-                <label for="nama">Nama</label>
+                <label for="nama">Nama Barang</label>
                 <input name="nama" type="text" class="validate">
               </div>
             </div>
@@ -78,10 +78,10 @@
           </div>
           <div class="row">
             <div class="col s12">
-              <button class="btn waves-effect waves-light" type="submit" name="submit">Simpan
-                <i class="material-icons left">check</i>
+              <button class="btn waves-effect waves-light" type="submit" name="submit">Kirim
+                <i class="material-icons left">send</i>
               </button>
-              <button class="btn red lighten-1 waves-effect waves-light" type="reset">Batal
+              <button class="btn red lighten-1 waves-effect waves-light" type="reset" onClick="toggle();">Batal
                 <i class="material-icons left">clear</i>
               </button>
             </div>

@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">\
   <link rel="stylesheet" href="css/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>LOG IN | SISTEM GUDANG UPT AIR MINUM KOTA CIMAHI</title>
+  <title>LOG IN | ELANG - UPTD AIR MINUM KOTA CIMAHI</title>
 </head>
 
 <body id="bodylogin">
@@ -37,7 +37,7 @@
     <center>
       <div class="section"></div>
 
-      <h5 class="indigo-text">SISTEM INFORMASI GUDANG</h5>
+      <h5 class="indigo-text">E-FORM LAPORAN KELUAR MASUK BARANG</h5>
       <h6 class="indigo-text">UPT AIR MINUM KOTA CIMAHI</h6>
       <div class="section"></div>
 

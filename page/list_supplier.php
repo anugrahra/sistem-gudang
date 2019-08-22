@@ -72,7 +72,7 @@
 
         <div class="row">
           <div class="col s12">
-            <h4><center><b>LIST SUPPLIER</b></center></h4>
+            <h4><div class="center"><b>LIST SUPPLIER</b></div></h4>
           </div>
         </div>
 
@@ -111,7 +111,7 @@
           <div class="row">
             <div class="col s12">  
               <div class="input-field col s6">
-                <label for="alpha_kode">Alpha Kode</label>
+                <label for="alpha_kode">Kode Alpha</label>
                 <input name="alpha_kode" type="text" class="validate" placeholder="Contoh: SM (untuk CV. SUMBER MAKMUR)">
               </div>
             </div>

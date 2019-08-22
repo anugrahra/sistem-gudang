@@ -196,22 +196,22 @@
           </div>
         </div>
 
-        <div class="row">
+        <div class="row center">
           <div class="col s12">
             <?php if(isset($page_total)) { ?>
               <?php if($page_total > 1) { ?>
                 <?php if($page_now > 1) {?>
-                  <center>
+                  <div class="center">
                     <a href="list_barang.php?page=<?php echo $page_now - 1 ?>" role="button" class="btn btn-info">&lt; Sebelumnya</a>
-                  </center>
-                    <?php }else { ?>
+                  </div>
+                    <?php }else{ ?>
                       <a href="" style="display: none;">Hilang</a>
                     <?php } ?>
-                    <?php if($page_now < $page_total) {?>
-                      <center>
+                    <?php if($page_now < $page_total) { ?>
+                      <div class="center">
                         <a href="list_barang.php?page=<?php echo $page_now + 1 ?>" role="button" class="btn btn-info">Selanjutnya &gt;</a>
-                      </center>
-                    <?php }else {?>
+                      </div>
+                    <?php }else{ ?>
                       <a href="" style="display: none;">Hilang</a>
                     <?php } ?>
                   </ul>
