@@ -29,7 +29,7 @@
 
         <div class="row">
           <div class="col s12">
-            <h4><center><b>LAPORAN PENERIMAAN</b></center></h4>
+            <h4><div class="center"><b>LAPORAN PENERIMAAN</b></div></h4>
           </div>
         </div>
 
@@ -103,13 +103,13 @@
         </div>
 
         <div class="row">
-          <center>
+          <div class="center">
             <div class="col s12">
               <button class="btn waves-effect waves-light" onclick="printContent('cetakLaporan')">Print PDF
                 <i class="material-icons left">picture_as_pdf</i>
               </button>
             </div>
-          </center>
+          </div>
         </div>
 
       </main>

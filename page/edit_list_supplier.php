@@ -76,7 +76,7 @@
 
         <div class="row">
           <div class="col s12">
-            <h4><center><b>EDIT DATA SUPPLIER</b></center></h4>
+            <h4><div class="center"><b>EDIT DATA SUPPLIER</b></div></h4>
           </div>
         </div>
 
@@ -126,9 +126,9 @@
               <button class="btn waves-effect waves-light" type="submit" name="submit">Simpan
                 <i class="material-icons left">check</i>
               </button>
-              <button class="btn red lighten-1 waves-effect waves-light" type="reset">Batal
+              <a class="btn red lighten-1 waves-effect waves-light" href="list_supplier.php">Batal
                 <i class="material-icons left">clear</i>
-              </button>
+              </a>
             </div>
           </div>
           <br>

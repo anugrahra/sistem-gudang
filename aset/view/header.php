@@ -7,7 +7,7 @@
       <a href="#!" class="brand-logo"><b>E</b><span class="lang">LANG</span></a>
       <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="home.php"><i class="material-icons left">home</i>Home</a></li>
+        <li><a href="home.php"><i class="material-icons left">home</i>Beranda</a></li>
         <li>
           <a class="dropDownMaster" href="#!" data-target="master-content"><i class="material-icons left">person</i><?=$_SESSION['username'];?><i class="material-icons right">arrow_drop_down</i></a>
         </li>
@@ -20,7 +20,7 @@
         <li>
           <a class="dropDownLaporan" href="#!" data-target="laporan-content"><i class="material-icons left">report</i>Laporan<i class="material-icons right">arrow_drop_down</i></a>
         </li>
-        <li><a href="logout.php"><i class="material-icons left">power_settings_new</i>Log Out</a></li>
+        <li><a href="logout.php"><i class="material-icons left">power_settings_new</i>Keluar</a></li>
       </ul>
     </div>
     </div>
@@ -29,7 +29,7 @@
 
 <!-- Sidenav -->
 <ul class="sidenav" id="mobile-nav">
-  <li><a href="home.php">Home</a></li>
+  <li><a href="home.php">Beranda</a></li>
   <li>
     <a class="dropDownMasterSide" href="#!" data-target="master-content-side">Master<i class="material-icons right">arrow_drop_down</i></a>
   </li>
@@ -49,13 +49,13 @@
 <ul id="master-content" class="dropdown-content">
   <li><a href="profil_user.php">Profil</a></li>
   <li class="divider"></li>
-  <li><a href="list_user.php">List User</a></li>
-  <li><a href="list_unit.php">List Unit</a></li>
-  <li><a href="list_supplier.php">List Supplier</a></li>
+  <li><a href="list_user.php">Daftar Pengguna</a></li>
+  <li><a href="list_unit.php">Daftar Unit</a></li>
+  <li><a href="list_supplier.php">Daftar Pemasok</a></li>
 </ul>
 
 <ul id="barang-content" class="dropdown-content">
-  <li><a href="list_barang.php">List Barang</a></li>
+  <li><a href="list_barang.php">Daftar Barang</a></li>
   <li><a href="list_jenis_barang.php">Jenis Barang</a></li>
 </ul>
 
@@ -67,7 +67,7 @@
 </ul>
 
 <ul id="laporan-content" class="dropdown-content">
-  <li><a href="stock_opname.php">Stock Opname</a></li>
+  <li><a href="stock_opname.php">Stok Opname</a></li>
   <li class="divider"></li>
   <li><a href="laporan_penerimaan.php">Laporan Penerimaan</a></li>
   <li><a href="laporan_pengeluaran.php">Laporan Pengeluaran</a></li>
@@ -79,13 +79,13 @@
 <ul id="master-content-side" class="dropdown-content">
   <li><a href="profil_user.php">Profil</a></li>
   <li class="divider"></li>
-  <li><a href="list_user.php">List User</a></li>
-  <li><a href="list_unit.php">List Unit</a></li>
-  <li><a href="list_supplier.php">List Supplier</a></li>
+  <li><a href="list_user.php">Daftar User</a></li>
+  <li><a href="list_unit.php">Daftar Unit</a></li>
+  <li><a href="list_supplier.php">Daftar Pemasok</a></li>
 </ul>
 
 <ul id="barang-content-side" class="dropdown-content">
-  <li><a href="list_barang.php">List Barang</a></li>
+  <li><a href="list_barang.php">Daftar Barang</a></li>
   <li><a href="list_jenis_barang.php">Jenis Barang</a></li>
 </ul>
 
@@ -97,7 +97,7 @@
 </ul>
 
 <ul id="laporan-content-side" class="dropdown-content">
-  <li><a href="stock_opname.php">Stock Opname</a></li>
+  <li><a href="stock_opname.php">Stok Opname</a></li>
   <li class="divider"></li>
   <li><a href="laporan_penerimaan.php">Laporan Penerimaan</a></li>
   <li><a href="laporan_pengeluaran.php">Laporan Pengeluaran</a></li>

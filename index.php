@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
   <link rel="stylesheet" href="css/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LOG IN | ELANG - UPTD AIR MINUM KOTA CIMAHI</title>
+  <title>MASUK | ELANG - UPTD AIR MINUM KOTA CIMAHI</title>
 </head>
 
 <body id="bodylogin">
@@ -53,22 +53,22 @@
             <div class="row">
               <div class="input-field col s12">
                 <input type="text" name="username">
-                <label for='email'>Username</label>
+                <label for='username'>Nama Pengguna</label>
               </div>
             </div>
 
             <div class="row">
               <div class="input-field col s12">
                 <input type="password" name="password">
-                <label for="password">Password</label>
+                <label for="password">Kata Sandi</label>
               </div>
               <label style="float: right;">
-                <span style="color: #F5F5F5"><b>Lupa Password?</b></span>
+                <span style="color: #F5F5F5"><b>Lupa Kata Sandi?</b></span>
               </label>
             </div>
             <div class="center">
               <div class="row">
-                <button type="submit" name="submit" class="col s12 btn btn-large waves-effect indigo">Log In</button>
+                <button type="submit" name="submit" class="col s12 btn btn-large waves-effect indigo">Masuk</button>
               </div>
             </div>
             <br>

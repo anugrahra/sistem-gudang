@@ -39,6 +39,14 @@ main {
   font-style: italic;
 }
 
+.opname th {
+  border: 1px solid black;
+}
+
+.opname td {
+  border: 1px solid black;
+}
+
 footer  {
   padding: 10px;
 }
