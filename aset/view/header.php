@@ -42,7 +42,7 @@
   <li>
     <a class="dropDownLaporanSide" href="#!" data-target="laporan-content-side">Laporan<i class="material-icons right">arrow_drop_down</i></a>
   </li>
-  <li><a href="">Log Out</a></li>
+  <li><a href="logout.php">Log Out</a></li>
 </ul>
 
 <!-- Dropdown Content Main -->
@@ -67,6 +67,8 @@
 </ul>
 
 <ul id="laporan-content" class="dropdown-content">
+  <li><a href="stock_opname.php">Stock Opname</a></li>
+  <li class="divider"></li>
   <li><a href="laporan_penerimaan.php">Laporan Penerimaan</a></li>
   <li><a href="laporan_pengeluaran.php">Laporan Pengeluaran</a></li>
   <li class="divider"></li>
@@ -95,6 +97,8 @@
 </ul>
 
 <ul id="laporan-content-side" class="dropdown-content">
+  <li><a href="stock_opname.php">Stock Opname</a></li>
+  <li class="divider"></li>
   <li><a href="laporan_penerimaan.php">Laporan Penerimaan</a></li>
   <li><a href="laporan_pengeluaran.php">Laporan Pengeluaran</a></li>
   <li class="divider"></li>

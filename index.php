@@ -2,9 +2,9 @@
 <html>
 <head>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">\
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
   <link rel="stylesheet" href="css/style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LOG IN | ELANG - UPTD AIR MINUM KOTA CIMAHI</title>
 </head>
 
@@ -34,11 +34,11 @@
 
   <div class="section"></div>
   <main id="mainlogin">
-    <center>
+    <div class="center">
       <div class="section"></div>
 
       <h5 class="indigo-text">E-FORM LAPORAN KELUAR MASUK BARANG</h5>
-      <h6 class="indigo-text">UPT AIR MINUM KOTA CIMAHI</h6>
+      <h6 class="indigo-text">UPTD AIR MINUM KOTA CIMAHI</h6>
       <div class="section"></div>
 
       <div class="container">
@@ -66,17 +66,17 @@
                 <span style="color: #F5F5F5"><b>Lupa Password?</b></span>
               </label>
             </div>
-            <center>
+            <div class="center">
               <div class="row">
                 <button type="submit" name="submit" class="col s12 btn btn-large waves-effect indigo">Log In</button>
               </div>
-            </center>
+            </div>
             <br>
           </form>
         </div>
       </div>
       <p class="grey-text">UPTD AIR MINUM KOTA CIMAHI &copy; 2019</p>
-    </center>
+    </div>
 
     <div class="section"></div>
     <div class="section"></div>
