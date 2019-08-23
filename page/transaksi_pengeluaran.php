@@ -23,7 +23,6 @@
       $nama_barang = '';
       $stok_awal   = 0;
       $jumlah      = 0;
-      $nama_barang = '';
 
       if(isset($_POST['submit'])){
         $no_transaksi           = $_POST['no_transaksi'];
@@ -45,7 +44,10 @@
         if(!empty($tanggal) && !empty($unit) && !empty($nama_barang) && !empty($jumlah)){
           if(transaksi_barang_keluar($no_transaksi, $keterangan_pengeluaran, $tanggal, $unit, $nama_barang, $jumlah, $user)){
             if(tambah_stok_barang($stok_aktual, $nama_barang)){
-              echo "<script>alert('Transaksi pengeluaran barang berhasil!');</script>";
+              echo "<script>"; 
+              echo "alert('Transaksi pengeluaran barang berhasil!');"; 
+              echo "window.location.href = 'laporan_pengeluaran.php';";
+              echo "</script>";
             }else{
               echo "<script>alert('Transaksi gagal!');</script>";
             }
@@ -70,7 +72,7 @@
 
         <div class="row">
           <div class="col s12">
-            <button class="btn waves-effect waves-light" onClick="tampilkan_listPenerimaan()">List Pengeluaran
+            <button class="btn waves-effect waves-light" onClick="tampilkan_listPenerimaan()">Daftar Pengeluaran
               <i class="material-icons left">keyboard_arrow_down</i>
             </button>
           </div>

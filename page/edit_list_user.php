@@ -53,7 +53,7 @@
 
 				<div class="row">
 					<div class="col s12">
-						<h4><center><b>EDIT DATA USER</b></center></h4>
+						<h4><div class="center"><b>UBAH DATA USER</b></div></h4>
 					</div>
 				</div>
 
@@ -61,31 +61,31 @@
 					<div class="row">
 						<div class="col s12">  
 							<div class="input-field col s6">
-								<label for="username">Username</label>
+								<label for="username">Nama Pengguna</label>
 								<input name="username" type="text" class="validate" value="<?=$username_awal;?>">
 							</div>
 						</div>
-            <div class="col s12">  
-              <div class="input-field col s6">
-                <label for="password">Password</label>
-                <input name="password" type="password" class="validate" value="<?=$password_awal;?>">
-              </div>
-            </div>
-            <div class="col s12">  
-              <div class="input-field col s6">
-                <label for="repassword">Ulangi Password</label>
-                <input name="repassword" type="password" class="validate" value="<?=$password_awal;?>">
-              </div>
-            </div>
+					<div class="col s12">  
+					<div class="input-field col s6">
+						<label for="password">Kata Sandi</label>
+						<input name="password" type="password" class="validate" value="<?=$password_awal;?>">
+					</div>
+					</div>
+					<div class="col s12">  
+					<div class="input-field col s6">
+						<label for="repassword">Ulangi Kata Sandi</label>
+						<input name="repassword" type="password" class="validate" value="<?=$password_awal;?>">
+					</div>
+					</div>
 					</div>
 					<div class="row">
 						<div class="col s12">
 							<button class="btn waves-effect waves-light" type="submit" name="submit">Simpan
 								<i class="material-icons left">check</i>
 							</button>
-							<button class="btn red lighten-1 waves-effect waves-light" type="reset">Batal
+							<a class="btn red lighten-1 waves-effect waves-light" href="list_user.php">Batal
 								<i class="material-icons left">clear</i>
-							</button>
+							</a>
 						</div>
 					</div>
 					<br>

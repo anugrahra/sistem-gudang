@@ -92,7 +92,7 @@
         <?=$error;?>
         <div class="row">
           <div class="col s12">
-            <h4><center><b>EDIT DATA BARANG</b></center></h4>
+            <h4><div class="center"><b>UBAH DATA BARANG</b></div></h4>
           </div>
         </div>
 
@@ -131,9 +131,9 @@
               <button class="btn waves-effect waves-light" type="submit" name="submit">Simpan
                 <i class="material-icons left">check</i>
               </button>
-              <button class="btn red lighten-1 waves-effect waves-light" type="reset">Batal
+              <a class="btn red lighten-1 waves-effect waves-light" href="list_barang.php">Batal
                 <i class="material-icons left">clear</i>
-              </button>
+              </a>
             </div>
           </div>
           <br>

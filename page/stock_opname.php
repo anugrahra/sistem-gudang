@@ -33,6 +33,17 @@
           </div>
         </div>
 
+        <div class="row">
+          <div class="col s2">
+            <select type="text" class="validate selek">
+              <option value="" disabled selected>Pilih Bulan</option>
+              <option value="Januari">Januari</option>
+              <option value="Februari">Februari</option>
+              <option value="Maret">Maret</option>
+            </select>
+          </div>
+        </div>
+
         <div id="cetakLaporan">
           
           <div class="row">

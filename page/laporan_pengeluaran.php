@@ -30,32 +30,29 @@
 
         <div class="row">
           <div class="col s12">
-            <h4><center><b>LAPORAN PENGELUARAN</b></center></h4>
+            <h4><div class="center"><b>LAPORAN PENGELUARAN</b></div></h4>
           </div>
         </div>
 
-        <form action="" method="get">
+        <form action="" method="get" class="">
           <div class="row">
             <div class="col s12">
-              <div class="input-field col s6">
+              <div class="input-field col s4">
                 <select name="nama_barang" type="text" class="validate selek">
                   <option value="" disabled selected>Pilih Barang</option>
                   <?php while($row_barang = mysqli_fetch_assoc($barangnya)):?>
                   <option value="<?=$row_barang['nama'];?>"><?=$row_barang['kode'];?> | <?=$row_barang['nama'];?></option>
                   <?php endwhile; ?>
                 </select>
-                <label for="nama_barang">Barang</label>
               </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col s12">
-              <button class="btn waves-effect waves-light" type="submit" name="submit">Preview Data
+              <br>
+                          <div class="col s6">
+              <button class="btn waves-effect waves-light" type="submit" name="submit">Lihat
                 <i class="material-icons left">content_copy</i>
               </button>
             </div>
-          </div>          
+            </div>
+          </div>
         </form>
 
         <div id="cetakLaporan">

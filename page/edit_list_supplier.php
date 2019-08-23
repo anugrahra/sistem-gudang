@@ -76,7 +76,7 @@
 
         <div class="row">
           <div class="col s12">
-            <h4><div class="center"><b>EDIT DATA SUPPLIER</b></div></h4>
+            <h4><div class="center"><b>UBAH DATA SUPPLIER</b></div></h4>
           </div>
         </div>
 
@@ -92,7 +92,7 @@
           <div class="row">
             <div class="col s12">  
               <div class="input-field col s6">
-                <label for="alpha_kode">Alpha Kode</label>
+                <label for="alpha_kode">Kode Alfa</label>
                 <input name="alpha_kode" type="text" class="validate" placeholder="Contoh: SM (untuk CV. SUMBER MAKMUR)">
               </div>
             </div>
@@ -108,7 +108,7 @@
           <div class="row">
             <div class="col s12">
               <div class="input-field col s6">
-                <label for="telp">Telp/HP</label>
+                <label for="telp">Telp/Ponsel</label>
                 <input name="telp" type="text" class="validate" value="<?=$no_kontak_awal;?>">
               </div>
             </div>

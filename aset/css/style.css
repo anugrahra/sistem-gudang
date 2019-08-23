@@ -39,12 +39,21 @@ main {
   font-style: italic;
 }
 
+.opname {
+  border: 2px solid black;
+}
+
 .opname th {
   border: 1px solid black;
+  background-color: lightgray;
 }
 
 .opname td {
   border: 1px solid black;
+}
+
+.laporanMemilih {
+  padding-bottom: 1px;
 }
 
 footer  {

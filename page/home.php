@@ -15,7 +15,7 @@
 
       <main>
         <div class="row center" style="margin-bottom: 80px;">
-          <h4>Selamat Datang, <b><?=$_SESSION['username'];?></b>! ;)</h4>
+          <h4>Selamat Datang, <b><?=$_SESSION['username'];?></b>.</h4>
         </div>
         <div class="row center">
           <div class="col s4">
@@ -44,10 +44,10 @@
               <div class="input-field col s6">
                 <i class="material-icons prefix">search</i>
                 <input name="cari_barang" type="search" class="validate">
-                <span class="helper-text" data-error="gagal" data-success="mencari...">Ketik, lalu tekan enter</span>
-              </div>              
+                <span class="helper-text" data-error="gagal" data-success="mencari...">Ketik, lalu tekan enter ↵</span>
+              </div>
             </div>
-          </div>        
+          </div>
         </form>
 
         <form action="" method="get" class="tampilkanPemesanan z-depth-1" style="display: none;">
@@ -81,7 +81,7 @@
               <button class="btn waves-effect waves-light" type="submit" name="submit">Kirim
                 <i class="material-icons left">send</i>
               </button>
-              <button class="btn red lighten-1 waves-effect waves-light" type="reset" onClick="toggle();">Batal
+              <button class="btn red lighten-1 waves-effect waves-light" type="reset" onClick="tampilkan_pemesanan();">Batal
                 <i class="material-icons left">clear</i>
               </button>
             </div>
