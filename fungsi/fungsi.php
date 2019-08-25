@@ -127,6 +127,12 @@ function tambah_barang($nama, $qty, $jenis, $num_kode, $kode){
 	return run($query);
 }
 
+function tambah_stok_opname($nama_barang, $satuan, $saldo_awal, $masuk, $keluar, $saldo_akhir, $keterangan, $bulan){
+	$query = "INSERT INTO stok_opname (nama_barang, satuan, saldo_awal, masuk, keluar, saldo_akhir, keterangn, bulan) VALUES ('$nama_barang', '$satuan', '$saldo_awal', '$masuk', '$keluar', '$saldo_akhir', '$keterangan', '$bulan')";
+
+	return run($query);
+}
+
 function tambah_supplier($kode, $nama, $alamat, $no_kontak, $email, $num_kode){
 	$nama      = escape($nama);
 	$alamat    = escape($alamat);
@@ -303,8 +309,8 @@ function supplier_per_id($id){
 }
 
 //EDIT DATA
-function edit_data_barang($kode, $nama, $stok, $jenis, $num_kode, $id){
-	$query = "UPDATE barang SET kode='$kode', nama='$nama', stok='$stok', num_kode='$num_kode' WHERE id=$id";
+function edit_data_barang($kode, $nama, $stok, $satuan, $jenis, $num_kode, $id){
+	$query = "UPDATE barang SET kode='$kode', nama='$nama', stok='$stok', satuan='$satuan', num_kode='$num_kode' WHERE id=$id";
 	
 	return run($query);
 }

@@ -4,7 +4,7 @@
   <nav class="blue">
     <div class="col s11">
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo"><b>E</b><span class="lang">LANG</span></a>
+      <a href="home.php" class="brand-logo"><b>E</b><span class="lang">LANG</span></a>
       <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="home.php"><i class="material-icons left">home</i>Beranda</a></li>

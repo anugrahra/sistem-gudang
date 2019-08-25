@@ -56,6 +56,10 @@ main {
   padding-bottom: 1px;
 }
 
+.tablestokbarang tr {
+  border: 0;
+}
+
 footer  {
   padding: 10px;
 }

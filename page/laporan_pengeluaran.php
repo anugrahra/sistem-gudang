@@ -46,11 +46,11 @@
                 </select>
               </div>
               <br>
-                          <div class="col s6">
-              <button class="btn waves-effect waves-light" type="submit" name="submit">Lihat
-                <i class="material-icons left">content_copy</i>
-              </button>
-            </div>
+              <div class="col s6">
+                <button class="btn waves-effect waves-light" type="submit" name="submit">Lihat
+                  <i class="material-icons left">content_copy</i>
+                </button>
+              </div>
             </div>
           </div>
         </form>

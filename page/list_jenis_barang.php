@@ -41,7 +41,7 @@
 
         <div class="row">
           <div class="col s12">
-            <h4><center><b>LIST JENIS BARANG</b></center></h4>
+            <h4><div class="center"><b>DAFTAR JENIS BARANG</b></div></h4>
           </div>
         </div>
 
@@ -65,7 +65,7 @@
           <div class="row">
             <div class="col s12">
               <div class="input-field col s6">
-                <label for="alpha_kode">Alpha Code</label>
+                <label for="alpha_kode">Kode Alfa</label>
                 <input name="alpha_kode" type="text" class="validate">
               </div>
             </div>
@@ -90,7 +90,7 @@
                 <tr>
                     <th>No</th>
                     <th>Jenis Barang</th>
-                    <th>Alpha Code</th>
+                    <th>Kode Alfa</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -102,7 +102,7 @@
                   <td><?=$nourut++;?></td>
                   <td><?=$row['jenis'];?></td>
                   <td><?=$row['alpha_kode'];?></td>
-                  <td><a href="edit_list_jenis_barang.php?id=<?=$row['id'];?>">Edit</a></td>
+                  <td><a href="edit_list_jenis_barang.php?id=<?=$row['id'];?>">Ubah</a></td>
                   <td><a href="hapus_jenis_barang.php?id=<?=$row['id'];?>" class="red-text" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')">Hapus</a></td>
                 </tr>
                 <?php endwhile; ?>

@@ -30,19 +30,21 @@
       if(isset($_GET['id'])){
         $barang = barang_per_id($id);
         while ($row = mysqli_fetch_assoc($barang)){
-          $kode_awal  = $row['kode'];
-          $nama_awal  = $row['nama'];
-          $stok_awal  = $row['stok'];
-          $jenis_awal = $row['jenis'];
+          $kode_awal   = $row['kode'];
+          $nama_awal   = $row['nama'];
+          $stok_awal   = $row['stok'];
+          $satuan_awal = $row['satuan'];
+          $jenis_awal  = $row['jenis'];
         }
       }
 
       //SUBMIT DATA KE FUNGSI EDIT_DATA_BARANG
       if(isset($_POST['submit'])){
         
-        $nama  = $_POST['nama'];
-        $stok  = $_POST['stok'];
-        $jenis = $_POST['jenis'];
+        $nama   = $_POST['nama'];
+        $stok   = $_POST['stok'];
+        $jenis  = $_POST['jenis'];
+        $satuan = $_POST['satuan'];
 
         //MENENTUKAN ALPHA_KODE JENIS BARANG
         if($jenis == 'AKSESORIS'){
@@ -75,7 +77,7 @@
         //MENGIRIM DATA UPDATE BARANG KE DATABASE
         if(!empty(trim($nama)) && !empty(trim($stok)) && !empty(trim($jenis))){
 
-          if(edit_data_barang($kode, $nama, $stok, $jenis, $num_kode, $id)){
+          if(edit_data_barang($kode, $nama, $stok, $satuan, $jenis, $num_kode, $id)){
              header('location:list_barang.php');
           }else{
             echo "<script>alert('Ada masalah ketika mengedit data barang!');</script>";
@@ -110,6 +112,14 @@
               <div class="input-field col s6">
                 <label for="stok">Stok Awal</label>
                 <input name="stok" type="number" class="validate" value="<?=$stok_awal;?>">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <div class="input-field col s6">
+                <label for="satuan">Satuan</label>
+                <input name="satuan" type="text" class="validate" value="<?=$satuan_awal;?>">
               </div>
             </div>
           </div>

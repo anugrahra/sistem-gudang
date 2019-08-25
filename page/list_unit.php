@@ -41,7 +41,7 @@
 
         <div class="row">
           <div class="col s12">
-            <h4><center><b>LIST UNIT</b></center></h4>
+            <h4><div class="center"><b>DAFTAR UNIT</b></div></h4>
           </div>
         </div>
 
@@ -92,7 +92,7 @@
                 <tr>
                   <td><?=$nourut++;?></td>
                   <td><?=$row['nama'];?></td>
-                  <td><a href="edit_list_unit.php?id=<?=$row['id'];?>">Edit</a></td>
+                  <td><a href="edit_list_unit.php?id=<?=$row['id'];?>">Ubah</a></td>
                   <td><a href="hapus_unit.php?id=<?=$row['id'];?>" class="red-text" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')">Hapus</a></td>
                 </tr>
                 <?php endwhile; ?>
