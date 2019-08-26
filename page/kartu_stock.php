@@ -15,14 +15,25 @@
     require_once "../fungsi/fungsi.php";
 
     //SETTING FUNGSI
-
+    $nama_barang = $_GET['nama_barang'];
+    if(isset($_GET['nama_barang'])){
+        $barang = barang_per_nama($nama_barang);
+        while ($row = mysqli_fetch_assoc($barang)){
+            $kode   = $row['kode'];
+            $nama   = $row['nama'];
+            $stok   = $row['stok'];
+            $satuan = $row['satuan'];
+            $jenis  = $row['jenis'];
+        }
+    }
+    $stock_barang = tampilkan_kartu_stock_by_barang($nama_barang);
     ?>
 
     <main>
 
     <div class="row">
         <div class="col s12">
-        <h4><div class="center"><b>KARTU STOK</b></div></h4>
+        <h4><div class="center"><b>KARTU STOCK</b></div></h4>
         </div>
     </div>
 
@@ -33,15 +44,15 @@
                 <table class="tablestokbarang">
                     <tr>
                         <th>Nama Barang</th>
-                        <td>namabarang</td>
+                        <td><?=$nama;?></td>
                     </tr>
                     <tr>
                         <th>Jenis Barang</th>
-                        <td>jenisbarang</td>
+                        <td><?=$jenis;?></td>
                     </tr>
                     <tr>
                         <th>Satuan Barang</th>
-                        <td>barang.satuan</td>
+                        <td><?=$satuan;?></td>
                     </tr>
                 </table>
             </div>
@@ -72,15 +83,17 @@
             </thead>
 
             <tbody>
+            <?php while($row = mysqli_fetch_assoc($stock_barang)):?>
                 <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>6</td>
-                    <td>7</td>
+                    <td><?=$row['tanggal'];?></td>
+                    <td><?=$row['no_bon'];?></td>
+                    <td><?=$row['keterangan'];?></td>
+                    <td><?=$row['masuk'];?></td>
+                    <td><?=$row['keluar'];?></td>
+                    <td><?=$row['sisa'];?></td>
+                    <td><?=$row['pengguna'];?></td>
                 </tr>
+            <?php endwhile; ?>
             </tbody>
             </table>
         </div>

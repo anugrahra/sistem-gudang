@@ -94,7 +94,7 @@
 
         <div class="row center">
           <div class="col s12">
-            <h4><b>LIST BARANG</b></h4>
+            <h4><b>DAFTAR BARANG</b></h4>
           </div>
         </div>
 

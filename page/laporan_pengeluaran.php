@@ -64,6 +64,7 @@
                   <tr>
                       <th>No</th>
                       <th>No Transaksi</th>
+                      <th>No Surat Pengambilan</th>
                       <th>Ket. Pengeluaran</th>
                       <th>Tanggal</th>
                       <th>Unit</th>
@@ -78,6 +79,7 @@
                   <tr>
                     <td><?=$nourut++;?></td>
                     <td><?=$row['no_transaksi'];?></td>
+                    <td><?=$row['no_surat_pengambilan'];?></td>
                     <td><?=$row['keterangan'];?></td>
                     <td><?= date('d-m-Y', strtotime($row['tanggal']));?></td>
                     <td><?=$row['unit'];?></td>
@@ -101,13 +103,13 @@
         </div>
 
         <div class="row">
-          <center>
+          <div class="center">
             <div class="col s12">
               <button class="btn waves-effect waves-light" onclick="printContent('cetakLaporan')">Print PDF
                 <i class="material-icons left">picture_as_pdf</i>
               </button>
             </div>
-          </center>
+          </div>
         </div>
 
       </main>

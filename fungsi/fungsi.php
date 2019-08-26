@@ -133,6 +133,12 @@ function tambah_stok_opname($nama_barang, $satuan, $saldo_awal, $masuk, $keluar,
 	return run($query);
 }
 
+function tambah_kartu_stock($nama_barang, $tanggal, $no_bon, $keterangan, $masuk, $keluar, $sisa, $pengguna){
+	$query = "INSERT INTO kartu_stock (nama_barang, tanggal, no_bon, keterangan, masuk, keluar, sisa, pengguna) VALUES ('$nama_barang', '$tanggal', '$no_bon', '$keterangan', '$masuk', '$keluar', '$sisa', '$pengguna')";
+
+	return run($query);
+}
+
 function tambah_supplier($kode, $nama, $alamat, $no_kontak, $email, $num_kode){
 	$nama      = escape($nama);
 	$alamat    = escape($alamat);
@@ -171,20 +177,20 @@ function tambah_jenis_barang($jenis, $alpha_kode){
 }
 
 //FUNGSI TRANSAKSI
-function transaksi_barang_masuk($no_transaksi, $keterangan_penerimaan, $tanggal, $supplier, $nama_barang, $jumlah, $user){
+function transaksi_barang_masuk($no_transaksi, $keterangan_penerimaan, $tanggal, $supplier, $nama_barang, $jumlah, $user, $no_surat_jalan){
 	$no_transaksi 		   = escape($no_transaksi);
 	$keterangan_penerimaan = escape($keterangan_penerimaan);
 
-	$query = "INSERT INTO penerimaan (no_transaksi, keterangan, tanggal, supplier, barang, jumlah, user) VALUES ('$no_transaksi', '$keterangan_penerimaan', '$tanggal', '$supplier', '$nama_barang', '$jumlah', '$user')";
+	$query = "INSERT INTO penerimaan (no_transaksi, keterangan, tanggal, supplier, barang, jumlah, user, no_surat_jalan) VALUES ('$no_transaksi', '$keterangan_penerimaan', '$tanggal', '$supplier', '$nama_barang', '$jumlah', '$user', '$no_surat_jalan')";
 
 	return run($query);
 }
 
-function transaksi_barang_keluar($no_transaksi, $keterangan_pengeluaran, $tanggal, $unit, $nama_barang, $jumlah, $user){
+function transaksi_barang_keluar($no_transaksi, $keterangan_pengeluaran, $tanggal, $unit, $nama_barang, $jumlah, $no_surat_pengambilan, $user){
 	$no_transaksi 		    = escape($no_transaksi);
 	$keterangan_pengeluaran = escape($keterangan_pengeluaran);
 
-	$query = "INSERT INTO pengeluaran (no_transaksi, keterangan, tanggal, unit, barang, jumlah, petugas) VALUES ('$no_transaksi', '$keterangan_pengeluaran', '$tanggal', '$unit', '$nama_barang', '$jumlah', '$user')";
+	$query = "INSERT INTO pengeluaran (no_transaksi, keterangan, tanggal, unit, barang, jumlah, no_surat_pengambilan, petugas) VALUES ('$no_transaksi', '$keterangan_pengeluaran', '$tanggal', '$unit', '$nama_barang', '$jumlah', '$no_surat_pengambilan', '$user')";
 
 	return run($query);
 }
@@ -261,6 +267,19 @@ function hasil_cari_barang_hilang($cari_barang_hilang){
 	
 	return $result;
 }
+
+//TAMPILKAN PER BARANG
+
+//harusnya per kode sih
+function barang_per_nama($nama){
+	global $link;
+
+	$query = "SELECT * FROM barang WHERE nama='$nama'";
+	$result = mysqli_query($link, $query);
+
+	return $result;
+}
+
 
 //TAMPILKAN PER ID
 function barang_per_id($id){
@@ -386,6 +405,15 @@ function tampilkan_penerimaan_by_barang($barang){
 	$result = mysqli_query($link, $query);
 
 	return $result;	
+}
+
+function tampilkan_kartu_stock_by_barang($nama_barang){
+	global $link;
+
+	$query = "SELECT * FROM kartu_stock WHERE nama_barang = '$nama_barang'";
+	$result = mysqli_query($link, $query);
+
+	return $result;
 }
 
 function tampilkan_pengeluaran_by_barang($barang){

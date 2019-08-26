@@ -56,7 +56,7 @@
 
 <ul id="barang-content" class="dropdown-content">
   <li><a href="list_barang.php">Daftar Barang</a></li>
-  <li><a href="list_jenis_barang.php">Jenis Barang</a></li>
+  <li><a href="list_jenis_barang.php">Klasifikasi</a></li>
 </ul>
 
 <ul id="transaksi-content" class="dropdown-content">
@@ -86,7 +86,7 @@
 
 <ul id="barang-content-side" class="dropdown-content">
   <li><a href="list_barang.php">Daftar Barang</a></li>
-  <li><a href="list_jenis_barang.php">Jenis Barang</a></li>
+  <li><a href="list_jenis_barang.php">Klasifikasi</a></li>
 </ul>
 
 <ul id="transaksi-content-side" class="dropdown-content">

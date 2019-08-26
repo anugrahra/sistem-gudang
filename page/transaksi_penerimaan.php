@@ -20,10 +20,16 @@
       $nourut             = 1;
       $penerimaan         = tampilkan_penerimaan();
 
+      //TRANSAKSI PENERIMAAN
       $nama_barang = '';
       $stok_awal   = 0;
       $jumlah      = 0;
       $nama_barang = '';
+
+      //KARTU STOCK
+      $no_bon = '0000';
+      $keluar = 0;
+      $pengguna = '';
 
       if(isset($_POST['submit'])){
         $no_transaksi          = $_POST['no_transaksi'];
@@ -32,6 +38,7 @@
         $supplier              = $_POST['supplier'];
         $nama_barang           = $_POST['nama_barang'];
         $jumlah                = $_POST['jumlah'];
+        $no_surat_jalan        = $_POST['no_surat_jalan'];
         $user                  = $_SESSION['username'];
 
         $showstokawal = stok_awal($nama_barang);
@@ -43,7 +50,7 @@
         $stok_aktual = $stok_awal + $jumlah;
 
         if(!empty($tanggal) && !empty($supplier) && !empty($nama_barang) && !empty($jumlah)){
-          if(transaksi_barang_masuk($no_transaksi, $keterangan_penerimaan, $tanggal, $supplier, $nama_barang, $jumlah, $user)){
+          if(transaksi_barang_masuk($no_transaksi, $keterangan_penerimaan, $tanggal, $supplier, $nama_barang, $jumlah, $user, $no_surat_jalan)){
             if(tambah_stok_barang($stok_aktual, $nama_barang)){
               echo "<script>alert('Transaksi penerimaan barang berhasil!');</script>";
             }else{
@@ -56,6 +63,8 @@
           echo "<script>alert('Data tidak boleh kosong!');</script>";
         }
  
+        tambah_kartu_stock($nama_barang, $tanggal, $no_bon, $keterangan_penerimaan, $jumlah, $keluar, $stok_aktual, $pengguna);
+
       }
 
       ?>
@@ -82,6 +91,7 @@
                 <tr>
                     <th>No</th>
                     <th>No Transaksi</th>
+                    <th>No Surat Jalan</th>
                     <th>Ket. Penerimaan</th>
                     <th>Tanggal</th>
                     <th>Supplier</th>
@@ -96,6 +106,7 @@
                 <tr>
                   <td><?=$nourut++;?></td>
                   <td><?=$row['no_transaksi'];?></td>
+                  <td><?=$row['no_surat_jalan'];?></td>
                   <td><?=$row['keterangan'];?></td>
                   <td><?= date('d-m-Y', strtotime($row['tanggal']));?></td>
                   <td><?=$row['supplier'];?></td>
@@ -115,6 +126,14 @@
               <div class="input-field col s6">
                 <label for="no_transaksi">No Transaksi</label>
                 <input name="no_transaksi" type="text" class="validate">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">  
+              <div class="input-field col s6">
+                <label for="no_surat_jalan">No Surat Jalan</label>
+                <input name="no_surat_jalan" type="text" class="validate">
               </div>
             </div>
           </div>

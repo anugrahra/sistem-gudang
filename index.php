@@ -75,7 +75,7 @@
           </form>
         </div>
       </div>
-      <p class="grey-text">UPTD AIR MINUM KOTA CIMAHI &copy; 2019</p>
+      <p class="grey-text">&copy; 2019</p>
     </div>
 
     <div class="section"></div>
