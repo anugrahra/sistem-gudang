@@ -35,10 +35,14 @@
         $keterangan_pengeluaran = $_POST['keterangan_pengeluaran'];
         $tanggal                = $_POST['tanggal'];
         $unit                   = $_POST['unit'];
-        $nama_barang            = $_POST['nama_barang'];
         $jumlah                 = $_POST['jumlah'];
         $no_surat_pengambilan   = $_POST['no_surat_pengambilan'];
         $user                   = $_SESSION['username'];
+
+        $kodedannama   = $_POST['nama_barang'];
+        $hasil_explode = explode('|', $kodedannama);
+        $nama_barang   = $hasil_explode[0];
+        $kode_barang   = $hasil_explode[1];
 
         $showstokawal = stok_awal($nama_barang);
 
@@ -49,8 +53,8 @@
         $stok_aktual = $stok_awal - $jumlah;
 
         if(!empty($tanggal) && !empty($unit) && !empty($nama_barang) && !empty($jumlah)){
-          if(transaksi_barang_keluar($no_transaksi, $keterangan_pengeluaran, $tanggal, $unit, $nama_barang, $jumlah, $no_surat_pengambilan, $user)){
-            if(tambah_stok_barang($stok_aktual, $nama_barang)){
+          if(transaksi_barang_keluar($no_transaksi, $keterangan_pengeluaran, $tanggal, $unit, $kode_barang, $nama_barang, $jumlah, $no_surat_pengambilan, $user)){
+            if(tambah_stok_barang($stok_aktual, $kode_barang)){
               echo "<script>"; 
               echo "alert('Transaksi pengeluaran barang berhasil!');"; 
               echo "window.location.href = 'laporan_pengeluaran.php';";
@@ -175,7 +179,7 @@
                 <select name="nama_barang" type="text" class="validate selek">
                   <option value="" disabled selected>Pilih Barang</option>
                   <?php while($row_barang = mysqli_fetch_assoc($barang)):?>
-                  <option value="<?=$row_barang['nama'];?>"><?=$row_barang['kode'];?> | <?=$row_barang['nama'];?></option>
+                  <option value="<?=$row_barang['nama'];?>|<?=$row_barang['kode'];?>"><?=$row_barang['kode'];?> | <?=$row_barang['nama'];?></option>
                   <?php endwhile; ?>
                 </select>
                 <label for="nama_barang">Barang</label>

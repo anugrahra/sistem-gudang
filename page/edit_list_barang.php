@@ -47,16 +47,18 @@
         $satuan = $_POST['satuan'];
 
         //MENENTUKAN ALPHA_KODE JENIS BARANG
-        if($jenis == 'AKSESORIS'){
-          $alpha_kode = 'AC';
-        }elseif($jenis == 'PERPIPAAN'){
-          $alpha_kode = 'PP';
-        }elseif($jenis == 'BAHAN KIMIA'){
+        if($jenis == 'BAHAN KIMIA'){
           $alpha_kode = 'KM';
-        }elseif ($jenis == 'ASET'){
-          $alpha_kode = 'ST';
+        }elseif ($jenis == 'PERALARAN KERJA'){
+          $alpha_kode = 'PK';
+        }elseif ($jenis == 'PERALARAN MESIN DAN LISTRIK'){
+          $alpha_kode = 'ML';
+        }elseif ($jenis == 'BAHAN BANGUNAN'){
+          $alpha_kode = 'BN';
+        }elseif ($jenis == 'MATERIAL'){
+          $alpha_kode = 'MT';
         }else{
-          $alpha_kode = 'LL';
+          $alpha_kode = 'SL';
         }
 
         //MENENTUKAN NUM_KODE JENIS BARANG

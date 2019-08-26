@@ -15,9 +15,9 @@
     require_once "../fungsi/fungsi.php";
 
     //SETTING FUNGSI
-    $nama_barang = $_GET['nama_barang'];
-    if(isset($_GET['nama_barang'])){
-        $barang = barang_per_nama($nama_barang);
+    $kode_barang = $_GET['kode'];
+    if(isset($_GET['kode'])){
+        $barang = barang_per_kode($kode_barang);
         while ($row = mysqli_fetch_assoc($barang)){
             $kode   = $row['kode'];
             $nama   = $row['nama'];
@@ -26,7 +26,7 @@
             $jenis  = $row['jenis'];
         }
     }
-    $stock_barang = tampilkan_kartu_stock_by_barang($nama_barang);
+    $stock_barang = tampilkan_kartu_stock_by_kode($kode_barang);
     ?>
 
     <main>

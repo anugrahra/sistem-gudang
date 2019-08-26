@@ -26,10 +26,14 @@
 
       if(isset($_POST['submit'])){
         $tanggal                = $_POST['tanggal'];
-        $nama_barang            = $_POST['nama_barang'];
         $jumlah                 = $_POST['jumlah'];
         $keterangan             = $_POST['keterangan'];
         $user                   = $_SESSION['username'];
+
+        $kodedannama   = $_POST['nama_barang'];
+        $hasil_explode = explode('|', $kodedannama);
+        $nama_barang   = $hasil_explode[0];
+        $kode_barang   = $hasil_explode[1];
 
         $showstokawal = stok_awal($nama_barang);
 
@@ -40,8 +44,8 @@
         $stok_aktual = $stok_awal - $jumlah;
 
         if(!empty($tanggal) && !empty($nama_barang) && !empty($jumlah)){
-          if(transaksi_barang_hilang($tanggal, $nama_barang, $jumlah, $keterangan, $user)){
-            if(tambah_stok_barang($stok_aktual, $nama_barang)){
+          if(transaksi_barang_hilang($tanggal, $kode_barang, $nama_barang, $jumlah, $keterangan, $user)){
+            if(tambah_stok_barang($stok_aktual, $kode_barang)){
               echo "<script>alert('Stok barang telah dikurangi karena hilang!');</script>";
             }else{
               echo "<script>alert('Gagal!');</script>";
@@ -118,7 +122,7 @@
                 <select name="nama_barang" type="text" class="validate selek">
                   <option value="" disabled selected>Pilih Barang</option>
                   <?php while($row_barang = mysqli_fetch_assoc($barang)):?>
-                  <option value="<?=$row_barang['nama'];?>"><?=$row_barang['kode'];?> | <?=$row_barang['nama'];?></option>
+                  <option value="<?=$row_barang['nama'];?>|<?=$row_barang['kode'];?>"><?=$row_barang['kode'];?> | <?=$row_barang['nama'];?></option>
                   <?php endwhile; ?>
                 </select>
                 <label for="nama_barang">Barang</label>
