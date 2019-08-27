@@ -12,7 +12,7 @@
           <a class="dropDownMaster" href="#!" data-target="master-content"><i class="material-icons left">person</i><?=$_SESSION['username'];?><i class="material-icons right">arrow_drop_down</i></a>
         </li>
         <li>
-          <a class="dropDownBarang" href="#!" data-target="barang-content"><i class="material-icons left">build</i>Barang<i class="material-icons right">arrow_drop_down</i></a>
+          <a class="" href="list_barang.php"><i class="material-icons left">build</i>Barang</a>
         </li>
         <li>
           <a class="dropDownTransaksi" href="#!" data-target="transaksi-content"><i class="material-icons left">swap_horiz</i>Transaksi<i class="material-icons right">arrow_drop_down</i></a>
@@ -34,7 +34,7 @@
     <a class="dropDownMasterSide" href="#!" data-target="master-content-side">Master<i class="material-icons right">arrow_drop_down</i></a>
   </li>
   <li>
-    <a class="dropDownBarangSide" href="#!" data-target="barang-content-side">Barang<i class="material-icons right">arrow_drop_down</i></a>
+    <a class="" href="list_barang.php">Barang</a>
   </li>
   <li>
     <a class="dropDownTransaksiSide" href="#!" data-target="transaksi-content-side">Transaksi<i class="material-icons right">arrow_drop_down</i></a>
@@ -54,11 +54,6 @@
   <li><a href="list_supplier.php">Daftar Pemasok</a></li>
 </ul>
 
-<ul id="barang-content" class="dropdown-content">
-  <li><a href="list_barang.php">Daftar Barang</a></li>
-  <li><a href="list_jenis_barang.php">Klasifikasi</a></li>
-</ul>
-
 <ul id="transaksi-content" class="dropdown-content">
   <li><a href="transaksi_penerimaan.php">Penerimaan</a></li>
   <li><a href="transaksi_pengeluaran.php">Pengeluaran</a></li>
@@ -72,7 +67,7 @@
   <li><a href="laporan_penerimaan.php">Laporan Penerimaan</a></li>
   <li><a href="laporan_pengeluaran.php">Laporan Pengeluaran</a></li>
   <li class="divider"></li>
-  <li><a href="laporan_stok.php">Laporan Stok Barang</a></li>
+  <li><a href="laporan_pemesanan.php">Laporan Pemesanan</a></li>
 </ul>
 
 <!-- Dropdown Content Side -->
@@ -84,11 +79,6 @@
   <li><a href="list_supplier.php">Daftar Pemasok</a></li>
 </ul>
 
-<ul id="barang-content-side" class="dropdown-content">
-  <li><a href="list_barang.php">Daftar Barang</a></li>
-  <li><a href="list_jenis_barang.php">Klasifikasi</a></li>
-</ul>
-
 <ul id="transaksi-content-side" class="dropdown-content">
   <li><a href="transaksi_penerimaan.php">Penerimaan</a></li>
   <li><a href="transaksi_pengeluaran.php">Pengeluaran</a></li>
@@ -97,12 +87,12 @@
 </ul>
 
 <ul id="laporan-content-side" class="dropdown-content">
-  <li><a href="stock_opname.php">Stok Opname</a></li>
+  <li><a href="stock_opname.php">Stock Opname</a></li>
   <li class="divider"></li>
   <li><a href="laporan_penerimaan.php">Laporan Penerimaan</a></li>
   <li><a href="laporan_pengeluaran.php">Laporan Pengeluaran</a></li>
   <li class="divider"></li>
-  <li><a href="laporan_stok.php">Laporan Stok Barang</a></li>
+  <li><a href="laporan_pemesanan.php">Laporan Pemesanan</a></li>
 </ul>
 
 </header>

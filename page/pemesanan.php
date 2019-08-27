@@ -15,66 +15,33 @@
       require_once "../fungsi/fungsi.php";
 
       //SETTING FUNGSI
-      $barang             = tampilkan_barang();
-      $tampilkan_supplier = tampilkan_supplier();
+      $tampilkan_unit     = tampilkan_unit();
       $nourut             = 1;
-      $penerimaan         = tampilkan_penerimaan();
-
-      //TRANSAKSI PENERIMAAN
-      $nama_barang = '';
-      $stok_awal   = 0;
-      $jumlah      = 0;
-      $nama_barang = '';
-
-      //KARTU STOCK
-      $no_bon = '0000';
-      $keluar = 0;
-      $pengguna = '';
 
       if(isset($_POST['submit'])){
-        var_dump($_POST['nama_barang']);
-        $no_transaksi          = $_POST['no_transaksi'];
-        $keterangan_penerimaan = $_POST['keterangan_penerimaan'];
-        $tanggal               = $_POST['tanggal'];
-        $supplier              = $_POST['supplier'];
-        $jumlah                = $_POST['jumlah'];
-        $no_surat_jalan        = $_POST['no_surat_jalan'];
-        $user                  = $_SESSION['username'];
+        $no_order     = $_POST['no_order'];
+        $nama_pemesan = $_POST['nama_pemesan'];
+        $unit         = $_POST['unit'];
+        $nama_barang  = $_POST['nama_barang'];
+        $jumlah       = $_POST['jumlah'];
+        $keterangan   = $_POST['keterangan'];
 
-        $kodedannama   = $_POST['nama_barang'];
-        $hasil_explode = explode('|', $kodedannama);
-        $nama_barang   = $hasil_explode[0];
-        $kode_barang   = $hasil_explode[1];
-
-        $showstokawal = stok_awal($nama_barang);
-
-        while($awal = mysqli_fetch_assoc($showstokawal)){
-          $stok_awal = $awal['stok'];
-        }
-
-        $stok_aktual = $stok_awal + $jumlah;
-
-        if(!empty($tanggal) && !empty($supplier) && !empty($nama_barang) && !empty($jumlah)){
-          if(transaksi_barang_masuk($no_transaksi, $keterangan_penerimaan, $tanggal, $supplier, $kode_barang, $nama_barang, $jumlah, $user, $no_surat_jalan)){
-            if(tambah_stok_barang($stok_aktual, $kode_barang)){
+        if(!empty($no_order) && !empty($nama_pemesan) && !empty($nama_barang) && !empty($jumlah)){
+          
+          if(transaksi_pemesanan($no_order, $nama_pemesan, $unit, $nama_barang, $jumlah, $keterangan)){
               echo "<script>"; 
-              echo "alert('Transaksi penerimaan barang berhasil!');"; 
-              echo "window.location.href = 'laporan_penerimaan.php';";
+              echo "alert('Pemesanan barang berhasil!');"; 
+              echo "window.location.href = 'laporan_pemesanan.php';";
               echo "</script>";
             }else{
               echo "<script>alert('Transaksi gagal!');</script>";
             }
-          }else{
-            echo "<script>alert('Ada masalah ketika menambahkan transaksi barang masuk!');</script>";
-          }
+
         }else{
           echo "<script>alert('Data tidak boleh kosong!');</script>";
         }
- 
-        tambah_kartu_stock($nama_barang, $tanggal, $no_bon, $keterangan_penerimaan, $jumlah, $keluar, $stok_aktual, $pengguna);
-
+        
       }
-
       ?>
       <main>
 
@@ -84,106 +51,41 @@
           </div>
         </div>
 
-        <div class="row">
-          <div class="col s12">
-            <button class="btn waves-effect waves-light" onClick="tampilkan_listPenerimaan()">List Penerimaan
-              <i class="material-icons left">keyboard_arrow_down</i>
-            </button>
-          </div>
-        </div>
-
-        <div class="row tampilkanListPenerimaan" style="display: none;">
-          <div class="col s12">
-            <table class="striped responsive-table">
-              <thead>
-                <tr>
-                    <th>No</th>
-                    <th>No Transaksi</th>
-                    <th>No Surat Jalan</th>
-                    <th>Ket. Penerimaan</th>
-                    <th>Tanggal</th>
-                    <th>Supplier</th>
-                    <th>Barang</th>
-                    <th>Jumlah</th>
-                    <th>Penerima</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <?php while($row = mysqli_fetch_assoc($penerimaan)):?>
-                <tr>
-                  <td><?=$nourut++;?></td>
-                  <td><?=$row['no_transaksi'];?></td>
-                  <td><?=$row['no_surat_jalan'];?></td>
-                  <td><?=$row['keterangan'];?></td>
-                  <td><?= date('d-m-Y', strtotime($row['tanggal']));?></td>
-                  <td><?=$row['supplier'];?></td>
-                  <td><?=$row['barang'];?></td>
-                  <td><?=$row['jumlah'];?></td>
-                  <td><?=$row['user'];?></td>
-                </tr>
-                <?php endwhile; ?>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
         <form action="" method="post">
           <div class="row">
             <div class="col s12">  
               <div class="input-field col s6">
-                <label for="no_transaksi">No Transaksi</label>
-                <input name="no_transaksi" type="text" class="validate">
+                <label for="no_order">No Order</label>
+                <input name="no_order" type="text" class="validate">
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col s12">  
               <div class="input-field col s6">
-                <label for="no_surat_jalan">No Surat Jalan</label>
-                <input name="no_surat_jalan" type="text" class="validate">
+                <label for="nama_pemesan">Nama Pemesan</label>
+                <input name="nama_pemesan" type="text" class="validate">
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col s12">
               <div class="input-field col s6">
-                <label for="keterangan_penerimaan">Keterangan Penerimaan</label>
-                <input name="keterangan_penerimaan" type="text" class="validate">
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12">
-              <div class="input-field col s6">
-                <label for="tanggal">Tanggal</label>
-                <input name="tanggal" type="date" class="validate" id="tglSekarang">
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12">
-              <div class="input-field col s6">
-                <select name="supplier" type="text" class="validate selek">
-                  <option value="" disabled selected>Pilih Supplier</option>
-                  <?php while($row_supplier = mysqli_fetch_assoc($tampilkan_supplier)):?>
-                  <option value="<?=$row_supplier['nama'];?>"><?=$row_supplier['kode'];?> | <?=$row_supplier['nama'];?></option>
+                <select name="unit" type="text" class="validate selek">
+                  <option value="" disabled selected>Pilih Unit</option>
+                  <?php while($row_unit = mysqli_fetch_assoc($tampilkan_unit)):?>
+                  <option value="<?=$row_unit['nama'];?>"><?=$row_unit['nama'];?></option>
                   <?php endwhile; ?>
                 </select>
-                <label for="supplier">Supplier</label>
+                <label for="supplier">Unit</label>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col s12">
               <div class="input-field col s6">
-                <select name="nama_barang" type="text" class="validate selek">
-                  <option value="" disabled selected>Pilih Barang</option>
-                  <?php while($row_barang = mysqli_fetch_assoc($barang)):?>
-                  <option value="<?=$row_barang['nama'];?>|<?=$row_barang['kode'];?>"><?=$row_barang['kode'];?> | <?=$row_barang['nama'];?></option>
-                  <?php endwhile; ?>
-                </select>
-                <label for="nama_barang">Barang</label>
+                <label for="nama_barang">Nama Barang</label>
+                <input name="nama_barang" type="text" class="validate">
               </div>
             </div>
           </div>
@@ -197,7 +99,15 @@
           </div>
           <div class="row">
             <div class="col s12">
-              <button class="btn waves-effect waves-light" type="submit" name="submit">Simpan
+              <div class="input-field col s6">
+                <label for="keterangan">Keterangan</label>
+                <input name="keterangan" type="text" class="validate">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <button class="btn waves-effect waves-light" type="submit" name="submit">Pesan
                 <i class="material-icons left">send</i>
               </button>
               <a class="btn red waves-effect waves-light" href="home.php">Batal

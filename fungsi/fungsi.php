@@ -45,6 +45,15 @@ function tampilkan_barang(){
 	return $result;
 }
 
+function tampilkan_pemesanan(){
+	global $link;
+
+	$query = "SELECT * FROM pemesanan ORDER BY id";
+	$result = mysqli_query($link, $query) or die ('gagal menampilkan list pemesanan');
+
+	return $result;
+}
+
 function tampilkan_barang_perhalaman(){
 	global $link, $awal, $per_page;
 
@@ -182,6 +191,12 @@ function transaksi_barang_masuk($no_transaksi, $keterangan_penerimaan, $tanggal,
 	$keterangan_penerimaan = escape($keterangan_penerimaan);
 
 	$query = "INSERT INTO penerimaan (no_transaksi, keterangan, tanggal, supplier, kode_barang, barang, jumlah, user, no_surat_jalan) VALUES ('$no_transaksi', '$keterangan_penerimaan', '$tanggal', '$supplier', '$kode_barang', '$nama_barang', '$jumlah', '$user', '$no_surat_jalan')";
+
+	return run($query);
+}
+
+function transaksi_pemesanan($no_order, $nama_pemesan, $unit, $nama_barang, $jumlah, $keterangan){
+	$query = "INSERT INTO pemesanan(no_order, nama_pemesan, unit, nama_barang, jumlah, keterangan) VALUES ('$no_order', '$nama_pemesan', '$unit', '$nama_barang', '$jumlah', '$keterangan')";
 
 	return run($query);
 }
