@@ -10,9 +10,16 @@
       session_start();
       if(!isset($_SESSION['username'])) header('location:../index.php');
 
+      use PHPMailer\PHPMailer\PHPMailer;
+      use PHPMailer\PHPMailer\Exception;
+
       require_once "../aset/view/header.php";
       require_once "../fungsi/db.php";
       require_once "../fungsi/fungsi.php";
+
+      require '../vendor/phpmailer/src/Exception.php';
+      require '../vendor/phpmailer/src/PHPMailer.php';
+      require '../vendor/phpmailer/src/SMTP.php';
 
       //SETTING FUNGSI
       $tampilkan_unit     = tampilkan_unit();
@@ -40,7 +47,40 @@
         }else{
           echo "<script>alert('Data tidak boleh kosong!');</script>";
         }
+
+        $mail = new PHPMailer(true);
+
+        try {
+            $mail->isSMTP();
+            $mail->Host       = 'ssl://smtp.googlemail.com';
+            $mail->SMTPAuth   = true;
+            $mail->Username   = 'elang.uptdam@gmail.com';
+            $mail->Password   = 'emailelanguptam999';
+            $mail->SMTPSecure = 'ssl';
+            $mail->Port       = 465;
+
+            //Recipients
+            $mail->setFrom('elang.uptdam@gmail.com', 'Elang UPTD AM Kota Cimahi');
+            $mail->addAddress('dialog.anugrah@gmail.com', 'Anugrah');     // Add a recipient
+            $mail->addReplyTo('elang.uptdam@gmail.com', 'ELang');
+
+            // Content
+            $mail->isHTML(true);
+            $mail->Subject = 'Pemesanan Barang';
+            $mail->Body    = 'No Order: ' . $no_order . '<br>
+                              Nama Pemesan: ' . $nama_pemesan . ' (' . $unit . ')<br>
+                              Pesanan: ' . $nama_barang . '<br>
+                              Jumlah: ' . $jumlah . '<br>
+                              Keterangan: ' . $keterangan;
+            // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+            $mail->send();
+            echo 'Pemesanan telah dikirim!';
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
         
+
       }
       ?>
       <main>
