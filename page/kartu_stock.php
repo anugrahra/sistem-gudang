@@ -60,8 +60,8 @@
             <div class="col s4">
                 <table class="tablestokbarang">
                     <tr>
-                        <th>No. Kode</th>
-                        <td style="border: 1px solid black;">nokode</td>
+                        <th>Kode</th>
+                        <td style="border: 1px solid black;"><?=$kode;?></td>
                     </tr>
                 </table>
             </div>

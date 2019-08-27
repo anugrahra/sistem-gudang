@@ -57,10 +57,11 @@
         if(!empty($tanggal) && !empty($supplier) && !empty($nama_barang) && !empty($jumlah)){
           if(transaksi_barang_masuk($no_transaksi, $keterangan_penerimaan, $tanggal, $supplier, $kode_barang, $nama_barang, $jumlah, $user, $no_surat_jalan)){
             if(tambah_stok_barang($stok_aktual, $kode_barang)){
-              echo "<script>"; 
-              echo "alert('Transaksi penerimaan barang berhasil!');"; 
-              echo "window.location.href = 'laporan_penerimaan.php';";
-              echo "</script>";
+              if(tambah_kartu_stock($nama_barang, $tanggal, $kode_barang, $keterangan_penerimaan, $jumlah, $keluar, $stok_aktual, $pengguna)){
+                echo "<script>"; 
+                echo "alert('Transaksi penerimaan barang berhasil!');"; 
+                echo "window.location.href = 'laporan_penerimaan.php';";
+                echo "</script>";
             }else{
               echo "<script>alert('Transaksi gagal!');</script>";
             }
@@ -70,9 +71,7 @@
         }else{
           echo "<script>alert('Data tidak boleh kosong!');</script>";
         }
- 
-        tambah_kartu_stock($nama_barang, $tanggal, $no_bon, $keterangan_penerimaan, $jumlah, $keluar, $stok_aktual, $pengguna);
-
+       }
       }
 
       ?>
@@ -98,7 +97,6 @@
               <thead>
                 <tr>
                     <th>No</th>
-                    <th>No Transaksi</th>
                     <th>No Surat Jalan</th>
                     <th>Ket. Penerimaan</th>
                     <th>Tanggal</th>
@@ -114,7 +112,6 @@
                 <?php while($row = mysqli_fetch_assoc($penerimaan)):?>
                 <tr>
                   <td><?=$nourut++;?></td>
-                  <td><?=$row['no_transaksi'];?></td>
                   <td><?=$row['no_surat_jalan'];?></td>
                   <td><?=$row['keterangan'];?></td>
                   <td><?= date('d-m-Y', strtotime($row['tanggal']));?></td>
@@ -131,14 +128,6 @@
         </div>
 
         <form action="" method="post">
-          <div class="row">
-            <div class="col s12">  
-              <div class="input-field col s6">
-                <label for="no_transaksi">No Transaksi</label>
-                <input name="no_transaksi" type="text" class="validate">
-              </div>
-            </div>
-          </div>
           <div class="row">
             <div class="col s12">  
               <div class="input-field col s6">

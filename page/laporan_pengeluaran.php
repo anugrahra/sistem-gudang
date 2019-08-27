@@ -63,13 +63,12 @@
                 <thead>
                   <tr>
                       <th>No</th>
-                      <th>No Transaksi</th>
+                      <th>Barang</th>
                       <th>No Surat Pengambilan</th>
                       <th>Ket. Pengeluaran</th>
                       <th>Tanggal</th>
-                      <th>Unit</th>
+                      <th>Pengguna</th>
                       <th>Kode Barang</th>
-                      <th>Barang</th>
                       <th>Jumlah</th>
                       <th>Petugas</th>
                   </tr>
@@ -79,13 +78,12 @@
                   <?php while($row = mysqli_fetch_assoc($pengeluaran)):?>
                   <tr>
                     <td><?=$nourut++;?></td>
-                    <td><?=$row['no_transaksi'];?></td>
+                    <td><a href="kartu_stock.php?kode=<?=$row['kode_barang'];?>"><?=$row['barang'];?></td>
                     <td><?=$row['no_surat_pengambilan'];?></td>
                     <td><?=$row['keterangan'];?></td>
                     <td><?= date('d-m-Y', strtotime($row['tanggal']));?></td>
                     <td><?=$row['unit'];?></td>
                     <td><?=$row['kode_barang'];?></td>
-                    <td><?=$row['barang'];?></td>
                     <td><?=$row['jumlah'];?></td>
                     <td><?=$row['petugas'];?></td>
                   </tr>

@@ -55,6 +55,7 @@
         if(!empty($tanggal) && !empty($unit) && !empty($nama_barang) && !empty($jumlah)){
           if(transaksi_barang_keluar($no_transaksi, $keterangan_pengeluaran, $tanggal, $unit, $kode_barang, $nama_barang, $jumlah, $no_surat_pengambilan, $user)){
             if(tambah_stok_barang($stok_aktual, $kode_barang)){
+              if(tambah_kartu_stock($nama_barang, $tanggal, $kode_barang, $keterangan_pengeluaran, $masuk, $jumlah, $stok_aktual, $unit)){
               echo "<script>"; 
               echo "alert('Transaksi pengeluaran barang berhasil!');"; 
               echo "window.location.href = 'laporan_pengeluaran.php';";
@@ -68,11 +69,8 @@
         }else{
           echo "<script>alert('Data tidak boleh kosong!');</script>";
         }
-
-        tambah_kartu_stock($nama_barang, $tanggal, $no_bon, $keterangan_penerimaan, $masuk, $jumlah, $stok_aktual, $unit);
- 
+       }
       }
-
       ?>
 
       <main>
@@ -163,13 +161,9 @@
           <div class="row">
             <div class="col s12">
               <div class="input-field col s6">
-                <select name="unit" type="text" class="validate selek">
-                  <option value="" disabled selected>Pilih Unit</option>
-                  <?php while($row_unit = mysqli_fetch_assoc($tampilkan_unit)):?>
-                  <option value="<?=$row_unit['nama'];?>"><?=$row_unit['nama'];?></option>
-                  <?php endwhile; ?>
-                </select>
-                <label for="unit">Unit Penerima</label>
+                <label for="unit">Penerima</label>
+                <input name="unit" type="text" class="validate">
+              </div>
               </div>
             </div>
           </div>

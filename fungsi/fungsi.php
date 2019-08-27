@@ -133,8 +133,8 @@ function tambah_stok_opname($nama_barang, $satuan, $saldo_awal, $masuk, $keluar,
 	return run($query);
 }
 
-function tambah_kartu_stock($nama_barang, $tanggal, $no_bon, $keterangan, $masuk, $keluar, $sisa, $pengguna){
-	$query = "INSERT INTO kartu_stock (nama_barang, tanggal, no_bon, keterangan, masuk, keluar, sisa, pengguna) VALUES ('$nama_barang', '$tanggal', '$no_bon', '$keterangan', '$masuk', '$keluar', '$sisa', '$pengguna')";
+function tambah_kartu_stock($nama_barang, $tanggal, $kode_barang, $keterangan, $masuk, $keluar, $sisa, $pengguna){
+	$query = "INSERT INTO kartu_stock (nama_barang, tanggal, kode_barang, keterangan, masuk, keluar, sisa, pengguna) VALUES ('$nama_barang', '$tanggal', '$kode_barang', '$keterangan', '$masuk', '$keluar', '$sisa', '$pengguna')";
 
 	return run($query);
 }
