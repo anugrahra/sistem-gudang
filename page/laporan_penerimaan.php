@@ -20,8 +20,8 @@
       $nourut = 1;
 
       if(isset($_POST['submit'])){
-        $barang = $_GET['nama_barang'];
-        $penerimaan = tampilkan_penerimaan_by_barang($barang);
+        $barang = $_GET['kode_barang'];
+        $penerimaan = tampilkan_penerimaan_by_kode($kode);
       }
       ?>
 
@@ -37,10 +37,10 @@
           <div class="row">
             <div class="col s12">
               <div class="input-field col s6">
-                <select name="nama_barang" type="text" class="validate selek">
+                <select name="kode_barang" type="text" class="validate selek">
                   <option value="" disabled selected>Pilih Barang</option>
                   <?php while($row_barang = mysqli_fetch_assoc($barangnya)):?>
-                  <option value="<?=$row_barang['nama'];?>"><?=$row_barang['kode'];?> | <?=$row_barang['nama'];?></option>
+                  <option value="<?=$row_barang['kode'];?>"><?=$row_barang['kode'];?> | <?=$row_barang['nama'];?></option>
                   <?php endwhile; ?>
                 </select>
                 <label for="nama_barang">Barang</label>
@@ -69,6 +69,7 @@
                       <th>Ket. Penerimaan</th>
                       <th>Tanggal</th>
                       <th>Supplier</th>
+                      <th>Kode Barang</th>
                       <th>Barang</th>
                       <th>Jumlah</th>
                       <th>Penerima</th>
@@ -83,6 +84,7 @@
                     <td><?=$row['keterangan'];?></td>
                     <td><?= date('d-m-Y', strtotime($row['tanggal']));?></td>
                     <td><?=$row['supplier'];?></td>
+                    <td><?=$row['kode_barang'];?></td>
                     <td><?=$row['barang'];?></td>
                     <td><?=$row['jumlah'];?></td>
                     <td><?=$row['user'];?></td>

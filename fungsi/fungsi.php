@@ -396,10 +396,10 @@ function hapus_user($id){
 }
 
 //UNTUK CETAK LAPORAN
-function tampilkan_penerimaan_by_barang($barang){
+function tampilkan_penerimaan_by_kode($kode){
 	global $link;
 
-	$query = "SELECT * FROM penerimaan WHERE barang = '$barang' ORDER BY id DESC";
+	$query = "SELECT * FROM penerimaan WHERE kode = '$kode' ORDER BY id DESC";
 	$result = mysqli_query($link, $query);
 
 	return $result;	

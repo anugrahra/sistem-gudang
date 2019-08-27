@@ -173,6 +173,7 @@
                   <th>Kode</th>
                   <th>Nama</th>
                   <th>Stok</th>
+                  <th>Satuan</th>
                   <th>Jenis</th>
                   <th></th>
                   <th></th>
@@ -184,8 +185,9 @@
                 <tr>
                   <td><?=$nourut++;?></td>
                   <td><?=$row['kode'];?></td>
-                  <td><?=$row['nama'];?></td>
-                  <td><?=$row['stok'];?>&nbsp;<?=$row['satuan'];?></td>
+                  <td><a href="kartu_stock.php?kode=<?=$row['kode'];?>"><?=$row['nama'];?></a></td>
+                  <td><?=$row['stok'];?></td>
+                  <td><?=$row['satuan'];?></td>
                   <td><?=$row['jenis'];?></td>
                   <td><a href="edit_list_barang.php?id=<?=$row['id'];?>">Ubah</a></td>
                   <td><a href="hapus_barang.php?id=<?=$row['id'];?>" class="red-text" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')">Hapus</a></td>

@@ -72,16 +72,16 @@
 
         <div class="row">
           <div class="col s12">
-            <h4><div class="center"><b>LIST SUPPLIER</b></div></h4>
+            <h4><div class="center"><b>DAFTAR PEMASOK</b></div></h4>
           </div>
         </div>
 
         <div class="row">
           <div class="col s12">
-            <button class="btn waves-effect waves-light" onClick="tampilkan_cari()">Cari Supplier
+            <button class="btn waves-effect waves-light" onClick="tampilkan_cari()">Cari Pemasok
               <i class="material-icons left">search</i>
             </button>
-            <button class="btn waves-effect waves-light" onClick="tampilkan_form()">Tambah Supplier
+            <button class="btn waves-effect waves-light" onClick="tampilkan_form()">Tambah Pemasok
               <i class="material-icons left">arrow_forward</i>
             </button>
           </div>
@@ -145,7 +145,7 @@
               <button class="btn waves-effect waves-light" type="submit" name="submit">Simpan
                 <i class="material-icons left">check</i>
               </button>
-              <button class="btn red lighten-1 waves-effect waves-light" type="reset">Batal
+              <button class="btn red lighten-1 waves-effect waves-light" onClick="tampilkan_form()">Batal
                 <i class="material-icons left">clear</i>
               </button>
             </div>

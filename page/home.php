@@ -19,7 +19,7 @@
         </div>
         <div class="row center">
           <div class="col s4">
-            <button href="" onClick="tampilkan_pemesanan()" style="padding: 5px;">
+            <button onClick="pemesanan()" style="padding: 5px;">
               <i class="material-icons large">add_shopping_cart</i>
               <p><b>Pemesanan Barang</b></p>
             </button>
@@ -48,45 +48,6 @@
               </div>
             </div>
           </div>
-        </form>
-
-        <form action="" method="get" class="tampilkanPemesanan z-depth-1" style="display: none;">
-          <b>Pemesanan Barang</b>
-          <div class="row">
-            <div class="col s12">  
-              <div class="input-field col s6">
-                <label for="nama">Nama Barang</label>
-                <input name="nama" type="text" class="validate">
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12">
-              <div class="input-field col s6">
-                <label for="qty">Kuantitas</label>
-                <input name="qty" type="number" class="validate">
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12">
-              <div class="input-field col s6">
-                <label for="qty">Spesifikasi</label>
-                <input name="qty" type="text" class="validate">
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12">
-              <button class="btn waves-effect waves-light" type="submit" name="submitPesanBarang">Kirim
-                <i class="material-icons left">send</i>
-              </button>
-              <button class="btn red lighten-1 waves-effect waves-light" type="reset" onClick="tampilkan_pemesanan();">Batal
-                <i class="material-icons left">clear</i>
-              </button>
-            </div>
-          </div>
-          <br>
         </form>
 
         <form action="" method="get" class="tampilkanPilihLaporan z-depth-1" style="display: none;">

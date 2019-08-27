@@ -48,6 +48,10 @@ function tampilkan_pilihLaporan() {
   $('.tampilkanPilihLaporan').toggle("slow");
 }
 
+function pemesanan() {
+  window.location.href = 'pemesanan.php';
+}
+
 function tampilkan_listPenerimaan(){
 	$('.tampilkanListPenerimaan').toggle("slow");
 }

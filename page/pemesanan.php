@@ -80,13 +80,13 @@
 
         <div class="row">
           <div class="col s12">
-            <h4><b>TRANSAKSI PENERIMAAN BARANG</b></h4>
+            <h4><b>PEMESANAN BARANG</b></h4>
           </div>
         </div>
 
         <div class="row">
           <div class="col s12">
-            <button class="btn waves-effect waves-light" onClick="tampilkan_listPenerimaan()">Daftar Penerimaan
+            <button class="btn waves-effect waves-light" onClick="tampilkan_listPenerimaan()">List Penerimaan
               <i class="material-icons left">keyboard_arrow_down</i>
             </button>
           </div>
@@ -103,7 +103,6 @@
                     <th>Ket. Penerimaan</th>
                     <th>Tanggal</th>
                     <th>Supplier</th>
-                    <th>Kode Barang</th>
                     <th>Barang</th>
                     <th>Jumlah</th>
                     <th>Penerima</th>
@@ -119,7 +118,6 @@
                   <td><?=$row['keterangan'];?></td>
                   <td><?= date('d-m-Y', strtotime($row['tanggal']));?></td>
                   <td><?=$row['supplier'];?></td>
-                  <td><?=$row['kode_barang'];?></td>
                   <td><?=$row['barang'];?></td>
                   <td><?=$row['jumlah'];?></td>
                   <td><?=$row['user'];?></td>
@@ -202,9 +200,9 @@
               <button class="btn waves-effect waves-light" type="submit" name="submit">Simpan
                 <i class="material-icons left">send</i>
               </button>
-              <button class="btn red waves-effect waves-light" type="reset">Batal
+              <a class="btn red waves-effect waves-light" href="home.php">Batal
                 <i class="material-icons left">clear</i>
-              </button>
+              </a>
             </div>
           </div>
         </form>
