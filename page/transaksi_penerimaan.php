@@ -31,9 +31,10 @@
       $keluar = 0;
       $pengguna = '';
 
-      if(isset($_POST['submit'])){
-        var_dump($_POST['nama_barang']);
-        $no_transaksi          = $_POST['no_transaksi'];
+      //STOCK OPNAME
+      $saldo_awal = 0;
+
+      if(isset($_POST['submit'])) {
         $keterangan_penerimaan = $_POST['keterangan_penerimaan'];
         $tanggal               = $_POST['tanggal'];
         $supplier              = $_POST['supplier'];
@@ -45,6 +46,7 @@
         $hasil_explode = explode('|', $kodedannama);
         $nama_barang   = $hasil_explode[0];
         $kode_barang   = $hasil_explode[1];
+        $satuan        = $hasil_explode[2];
 
         $showstokawal = stok_awal($nama_barang);
 
@@ -54,24 +56,30 @@
 
         $stok_aktual = $stok_awal + $jumlah;
 
-        if(!empty($tanggal) && !empty($supplier) && !empty($nama_barang) && !empty($jumlah)){
-          if(transaksi_barang_masuk($no_transaksi, $keterangan_penerimaan, $tanggal, $supplier, $kode_barang, $nama_barang, $jumlah, $user, $no_surat_jalan)){
+        if(!empty($tanggal) && !empty($supplier) && !empty($nama_barang) && !empty($jumlah) && !empty($no_surat_jalan)){
+          if(transaksi_barang_masuk($keterangan_penerimaan, $tanggal, $supplier, $kode_barang, $nama_barang, $jumlah, $user, $no_surat_jalan)){
             if(tambah_stok_barang($stok_aktual, $kode_barang)){
               if(tambah_kartu_stock($nama_barang, $tanggal, $kode_barang, $keterangan_penerimaan, $jumlah, $keluar, $stok_aktual, $pengguna)){
-                echo "<script>"; 
-                echo "alert('Transaksi penerimaan barang berhasil!');"; 
-                echo "window.location.href = 'laporan_penerimaan.php';";
-                echo "</script>";
-            }else{
-              echo "<script>alert('Transaksi gagal!');</script>";
+                if(tambah_stok_opname($nama_barang, $satuan, $saldo_awal, $jumlah, $keluar)){
+                  echo "<script>";
+                  echo "alert('Transaksi penerimaan barang berhasil!');"; 
+                  echo "window.location.href = 'laporan_penerimaan.php';";
+                  echo "</script>";
+                } else {
+                  echo "<script>alert('Gagal menambahkan stock opname!');</script>";
+                }
+              } else {
+                echo "<script>alert('Transaksi gagal!');</script>";
+              }
+            } else {
+              echo "<script>alert('Ada masalah ketika menambahkan stok barang!');</script>";  
             }
-          }else{
+          } else {
             echo "<script>alert('Ada masalah ketika menambahkan transaksi barang masuk!');</script>";
           }
-        }else{
+        } else {
           echo "<script>alert('Data tidak boleh kosong!');</script>";
         }
-       }
       }
 
       ?>
@@ -156,12 +164,12 @@
             <div class="col s12">
               <div class="input-field col s6">
                 <select name="supplier" type="text" class="validate selek">
-                  <option value="" disabled selected>Pilih Supplier</option>
+                  <option value="" disabled selected>Pilih Pemasok</option>
                   <?php while($row_supplier = mysqli_fetch_assoc($tampilkan_supplier)):?>
                   <option value="<?=$row_supplier['nama'];?>"><?=$row_supplier['kode'];?> | <?=$row_supplier['nama'];?></option>
                   <?php endwhile; ?>
                 </select>
-                <label for="supplier">Supplier</label>
+                <label for="supplier">Pemasok</label>
               </div>
             </div>
           </div>
@@ -171,7 +179,7 @@
                 <select name="nama_barang" type="text" class="validate selek">
                   <option value="" disabled selected>Pilih Barang</option>
                   <?php while($row_barang = mysqli_fetch_assoc($barang)):?>
-                  <option value="<?=$row_barang['nama'];?>|<?=$row_barang['kode'];?>"><?=$row_barang['kode'];?> | <?=$row_barang['nama'];?></option>
+                  <option value="<?=$row_barang['nama'];?>|<?=$row_barang['kode'];?>|<?=$row_barang['satuan'];?>"><?=$row_barang['kode'];?> | <?=$row_barang['nama'];?></option>
                   <?php endwhile; ?>
                 </select>
                 <label for="nama_barang">Barang</label>

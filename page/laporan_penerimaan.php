@@ -33,30 +33,6 @@
           </div>
         </div>
 
-        <form action="" method="get">
-          <div class="row">
-            <div class="col s12">
-              <div class="input-field col s6">
-                <select name="kode_barang" type="text" class="validate selek">
-                  <option value="" disabled selected>Pilih Barang</option>
-                  <?php while($row_barang = mysqli_fetch_assoc($barangnya)):?>
-                  <option value="<?=$row_barang['kode'];?>"><?=$row_barang['kode'];?> | <?=$row_barang['nama'];?></option>
-                  <?php endwhile; ?>
-                </select>
-                <label for="nama_barang">Barang</label>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col s12">
-              <button class="btn waves-effect waves-light" type="submit" name="submit">Preview Data
-                <i class="material-icons left">content_copy</i>
-              </button>
-            </div>
-          </div>          
-        </form>
-
         <div id="cetakLaporan">
           
           <div class="row">
@@ -65,11 +41,11 @@
                 <thead>
                   <tr>
                       <th>No</th>
+                      <th>Barang</th>
+                      <th>No Surat Jalan</th>
                       <th>Ket. Penerimaan</th>
                       <th>Tanggal</th>
                       <th>Supplier</th>
-                      <th>Kode Barang</th>
-                      <th>Barang</th>
                       <th>Jumlah</th>
                       <th>Penerima</th>
                   </tr>
@@ -80,10 +56,10 @@
                   <tr>
                     <td><?=$nourut++;?></td>
                     <td><a href="kartu_stock.php?kode=<?=$row['kode_barang'];?>"><?=$row['barang'];?></a></td>
+                    <td><?=$row['no_surat_jalan'];?></td>
                     <td><?=$row['keterangan'];?></td>
                     <td><?= date('d-m-Y', strtotime($row['tanggal']));?></td>
                     <td><?=$row['supplier'];?></td>
-                    <td><?=$row['kode_barang'];?></td>
                     <td><?=$row['jumlah'];?></td>
                     <td><?=$row['user'];?></td>
                   </tr>

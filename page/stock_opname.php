@@ -15,8 +15,7 @@
       require_once "../fungsi/fungsi.php";
 
       //SETTING FUNGSI
-      $barangnya = tampilkan_barang();
-      $penerimaan = tampilkan_penerimaan();
+      $stock_opname = tampilkan_stock_opname();
       $nourut = 1;
 
       if(isset($_POST['submit'])){
@@ -37,9 +36,18 @@
           <div class="col s2">
             <select type="text" class="validate selek">
               <option value="" disabled selected>Pilih Bulan</option>
-              <option value="Januari">Januari</option>
-              <option value="Februari">Februari</option>
-              <option value="Maret">Maret</option>
+              <option value="01">Januari</option>
+              <option value="02">Februari</option>
+              <option value="03">Maret</option>
+              <option value="04">April</option>
+              <option value="05">Mei</option>
+              <option value="06">Juni</option>
+              <option value="07">Juli</option>
+              <option value="08">Agustus</option>
+              <option value="09">September</option>
+              <option value="10">Oktober</option>
+              <option value="11">November</option>
+              <option value="12">Desember</option>
             </select>
           </div>
         </div>
@@ -66,25 +74,20 @@
                 </thead>
 
                 <tbody>
+                  <?php while($row = mysqli_fetch_assoc($stock_opname)): ?>
                   <tr>
                     <td><?=$nourut++;?></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><?=$row['nama_barang'];?></td>
+                    <td><?=$row['satuan'];?></td>
+                    <td><?=$row['saldo_awal'];?></td>
+                    <td><?=$row['masuk'];?></td>
+                    <td><?=$row['keluar'];?></td>
+                    <td><?=$row['saldo_akhir'];?></td>
+                    <td><?=$row['keterangan'];?></td>
                   </tr>
+                  <?php endwhile;?>
                 </tbody>
               </table>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col s12">
-              <br>
-              Dibuat tanggal <?=date('j F Y');?>, oleh <b><?=$_SESSION['username'];?></b>
             </div>
           </div>
 

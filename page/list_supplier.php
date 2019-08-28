@@ -170,7 +170,18 @@
               </thead>
 
               <tbody>
-                <?php while($row = mysqli_fetch_assoc($supplier)):?>
+                <?php
+                while($row = mysqli_fetch_assoc($supplier)):
+
+								$sembunyi = '';
+                
+                if ($row['kode'] === 'SW000') {
+                  $sembunyi = 'none';
+                }else{
+                  $sembunyi = '';
+                }
+                
+                ?>
                 <tr>
                   <td><?=$nourut++;?></td>
                   <td><?=$row['kode'];?></td>
@@ -178,8 +189,8 @@
                   <td><?=$row['alamat'];?></td>
                   <td><?=$row['no_kontak'];?></td>
                   <td><?=$row['email'];?></td>
-                  <td><a href="edit_list_supplier.php?id=<?=$row['id'];?>">Edit</a></td>
-                  <td><a href="hapus_supplier.php?id=<?=$row['id'];?>" class="red-text" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')">Hapus</a></td>
+                  <td><a href="edit_list_supplier.php?id=<?=$row['id'];?>" style="display: <?=$sembunyi;?>;">Edit</a></td>
+                  <td><a href="hapus_supplier.php?id=<?=$row['id'];?>" class="red-text" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')" style="display: <?=$sembunyi;?>;">Hapus</a></td>
                 </tr>
                 <?php endwhile; ?>
               </tbody>

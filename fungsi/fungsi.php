@@ -126,6 +126,15 @@ function tampilkan_kehilangan(){
 	return $result;
 }
 
+function tampilkan_stock_opname(){
+	global $link;
+
+	$query = "SELECT * FROM stok_opname";
+	$result = mysqli_query($link, $query) or die ('gagal menampilkan data stock opname');
+
+	return $result;
+}
+
 //FUNGSI TAMBAH
 function tambah_barang($nama, $qty, $jenis, $num_kode, $kode){
 	$nama  = escape($nama);
@@ -136,8 +145,8 @@ function tambah_barang($nama, $qty, $jenis, $num_kode, $kode){
 	return run($query);
 }
 
-function tambah_stok_opname($nama_barang, $satuan, $saldo_awal, $masuk, $keluar, $saldo_akhir, $keterangan, $bulan){
-	$query = "INSERT INTO stok_opname (nama_barang, satuan, saldo_awal, masuk, keluar, saldo_akhir, keterangn, bulan) VALUES ('$nama_barang', '$satuan', '$saldo_awal', '$masuk', '$keluar', '$saldo_akhir', '$keterangan', '$bulan')";
+function tambah_stok_opname($nama_barang, $satuan, $saldo_awal, $masuk, $keluar){
+	$query = "INSERT INTO stok_opname (nama_barang, satuan, saldo_awal, masuk, keluar) VALUES ('$nama_barang', '$satuan', '$saldo_awal', '$masuk', '$keluar')";
 
 	return run($query);
 }
@@ -186,11 +195,10 @@ function tambah_jenis_barang($jenis, $alpha_kode){
 }
 
 //FUNGSI TRANSAKSI
-function transaksi_barang_masuk($no_transaksi, $keterangan_penerimaan, $tanggal, $supplier, $kode_barang, $nama_barang, $jumlah, $user, $no_surat_jalan){
-	$no_transaksi 		   = escape($no_transaksi);
+function transaksi_barang_masuk($keterangan_penerimaan, $tanggal, $supplier, $kode_barang, $nama_barang, $jumlah, $user, $no_surat_jalan){
 	$keterangan_penerimaan = escape($keterangan_penerimaan);
 
-	$query = "INSERT INTO penerimaan (no_transaksi, keterangan, tanggal, supplier, kode_barang, barang, jumlah, user, no_surat_jalan) VALUES ('$no_transaksi', '$keterangan_penerimaan', '$tanggal', '$supplier', '$kode_barang', '$nama_barang', '$jumlah', '$user', '$no_surat_jalan')";
+	$query = "INSERT INTO penerimaan (keterangan, tanggal, supplier, kode_barang, barang, jumlah, user, no_surat_jalan) VALUES ('$keterangan_penerimaan', '$tanggal', '$supplier', '$kode_barang', '$nama_barang', '$jumlah', '$user', '$no_surat_jalan')";
 
 	return run($query);
 }

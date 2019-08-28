@@ -61,7 +61,7 @@
 
             //Recipients
             $mail->setFrom('elang.uptdam@gmail.com', 'Elang UPTD AM Kota Cimahi');
-            $mail->addAddress('dialog.anugrah@gmail.com', 'Anugrah');     // Add a recipient
+            $mail->addAddress('hendriannnn@gmail.com', 'Hendrian');     // Add a recipient
             $mail->addReplyTo('elang.uptdam@gmail.com', 'ELang');
 
             // Content

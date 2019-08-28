@@ -62,7 +62,7 @@
 </ul>
 
 <ul id="laporan-content" class="dropdown-content">
-  <li><a href="stock_opname.php">Stok Opname</a></li>
+  <li><a href="stock_opname.php">Stock Opname</a></li>
   <li class="divider"></li>
   <li><a href="laporan_penerimaan.php">Laporan Penerimaan</a></li>
   <li><a href="laporan_pengeluaran.php">Laporan Pengeluaran</a></li>
