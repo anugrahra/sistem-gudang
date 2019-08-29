@@ -58,6 +58,8 @@
   <li><a href="transaksi_penerimaan.php">Penerimaan</a></li>
   <li><a href="transaksi_pengeluaran.php">Pengeluaran</a></li>
   <li class="divider"></li>
+  <li><a href="pemesanan.php">Pemesanan</a></li>
+  <li class="divider"></li>
   <li><a href="kehilangan.php">Kehilangan</a></li>
 </ul>
 
@@ -82,6 +84,8 @@
 <ul id="transaksi-content-side" class="dropdown-content">
   <li><a href="transaksi_penerimaan.php">Penerimaan</a></li>
   <li><a href="transaksi_pengeluaran.php">Pengeluaran</a></li>
+  <li class="divider"></li>
+  <li><a href="pemesanan.php">Pemesanan</a></li>
   <li class="divider"></li>
   <li><a href="kehilangan.php">Kehilangan</a></li>
 </ul>

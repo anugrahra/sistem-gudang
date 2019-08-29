@@ -60,7 +60,7 @@
           if(transaksi_barang_masuk($keterangan_penerimaan, $tanggal, $supplier, $kode_barang, $nama_barang, $jumlah, $user, $no_surat_jalan)){
             if(tambah_stok_barang($stok_aktual, $kode_barang)){
               if(tambah_kartu_stock($nama_barang, $tanggal, $kode_barang, $keterangan_penerimaan, $jumlah, $keluar, $stok_aktual, $pengguna)){
-                if(tambah_stok_opname($nama_barang, $satuan, $saldo_awal, $jumlah, $keluar)){
+                if(tambah_stok_opname($nama_barang, $satuan, $saldo_awal, $jumlah, $keluar, $stok_aktual, $keterangan_penerimaan, $tanggal)){
                   echo "<script>";
                   echo "alert('Transaksi penerimaan barang berhasil!');"; 
                   echo "window.location.href = 'laporan_penerimaan.php';";

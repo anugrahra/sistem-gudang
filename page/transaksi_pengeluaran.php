@@ -30,6 +30,9 @@
       $masuk = 0;
       $pengguna = '';
 
+      //STOCK OPNAME
+      $saldo_awal = 0;
+
       if(isset($_POST['submit'])){
         $no_transaksi           = $_POST['no_transaksi'];
         $keterangan_pengeluaran = $_POST['keterangan_pengeluaran'];
@@ -56,20 +59,26 @@
           if(transaksi_barang_keluar($no_transaksi, $keterangan_pengeluaran, $tanggal, $unit, $kode_barang, $nama_barang, $jumlah, $no_surat_pengambilan, $user)){
             if(tambah_stok_barang($stok_aktual, $kode_barang)){
               if(tambah_kartu_stock($nama_barang, $tanggal, $kode_barang, $keterangan_pengeluaran, $masuk, $jumlah, $stok_aktual, $unit)){
-              echo "<script>"; 
-              echo "alert('Transaksi pengeluaran barang berhasil!');"; 
-              echo "window.location.href = 'laporan_pengeluaran.php';";
-              echo "</script>";
-            }else{
-              echo "<script>alert('Transaksi gagal!');</script>";
+                if(tambah_stok_opname($nama_barang, $satuan, $saldo_awal, $masuk, $jumlah, $stok_aktual, $keterangan_pengeluaran, $tanggal)){
+                  echo "<script>";
+                  echo "alert('Transaksi penerimaan barang berhasil!');"; 
+                  echo "window.location.href = 'laporan_penerimaan.php';";
+                  echo "</script>";
+                } else {
+                  echo "<script>alert('Gagal menambahkan stock opname!');</script>";
+                }
+              } else {
+                echo "<script>alert('Transaksi gagal!');</script>";
+              }
+            } else {
+              echo "<script>alert('Ada masalah ketika mengeluarkan stok barang!');</script>";  
             }
-          }else{
-            echo "<script>alert('Ada masalah ketika menambahkan data transaksi barang keluar!');</script>";
+          } else {
+            echo "<script>alert('Ada masalah ketika menambahkan transaksi barang keluar!');</script>";
           }
-        }else{
+        } else {
           echo "<script>alert('Data tidak boleh kosong!');</script>";
         }
-       }
       }
       ?>
 

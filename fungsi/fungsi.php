@@ -145,8 +145,8 @@ function tambah_barang($nama, $qty, $jenis, $num_kode, $kode){
 	return run($query);
 }
 
-function tambah_stok_opname($nama_barang, $satuan, $saldo_awal, $masuk, $keluar){
-	$query = "INSERT INTO stok_opname (nama_barang, satuan, saldo_awal, masuk, keluar) VALUES ('$nama_barang', '$satuan', '$saldo_awal', '$masuk', '$keluar')";
+function tambah_stok_opname($nama_barang, $satuan, $saldo_awal, $masuk, $keluar, $saldo_akhir, $keterangan, $tanggal){
+	$query = "INSERT INTO stok_opname (nama_barang, satuan, saldo_awal, masuk, keluar, saldo_akhir, keterangan, bulan) VALUES ('$nama_barang', '$satuan', '$saldo_awal', '$masuk', '$keluar', '$saldo_akhir', '$keterangan', '$tanggal')";
 
 	return run($query);
 }
@@ -307,6 +307,15 @@ function barang_per_id($id){
 	global $link;
 
 	$query = "SELECT * FROM barang WHERE id=$id";
+	$result = mysqli_query($link, $query);
+
+	return $result;
+}
+
+function opname_per_bulan($bulan){
+	global $link;
+
+	$query = "SELECT * FROM stok_opname WHERE MONTH(bulan)=$bulan";
 	$result = mysqli_query($link, $query);
 
 	return $result;

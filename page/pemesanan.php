@@ -61,17 +61,19 @@
 
             //Recipients
             $mail->setFrom('elang.uptdam@gmail.com', 'Elang UPTD AM Kota Cimahi');
-            $mail->addAddress('hendriannnn@gmail.com', 'Hendrian');     // Add a recipient
-            $mail->addReplyTo('elang.uptdam@gmail.com', 'ELang');
+            $mail->addAddress('dialog.anugrah@gmail.com', 'Anugrah');     // Add a recipient
+            $mail->addReplyTo('elang.uptdam@gmail.com', 'Elang');
 
             // Content
             $mail->isHTML(true);
             $mail->Subject = 'Pemesanan Barang';
-            $mail->Body    = 'No Order: ' . $no_order . '<br>
-                              Nama Pemesan: ' . $nama_pemesan . ' (' . $unit . ')<br>
-                              Pesanan: ' . $nama_barang . '<br>
-                              Jumlah: ' . $jumlah . '<br>
-                              Keterangan: ' . $keterangan;
+            $mail->Body    = '<div style="background-color:#2196F3; color: white;"><h1><center>Pemesanan Barang</center></h1></div>
+            <b>No Order:</b> ' . $no_order . '<br>
+            <b>Nama Pemesan:</b> ' . $nama_pemesan . '<br>
+            <b>Unit:</b> ' . $unit . '<br>
+            <b>Pesanan:</b> ' . $nama_barang . '<br>
+            <b>Jumlah:</b> ' . $jumlah . '<br>
+            <b>Keterangan:</b> ' . $keterangan;
             // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
             $mail->send();
