@@ -46,6 +46,7 @@
         $hasil_explode = explode('|', $kodedannama);
         $nama_barang   = $hasil_explode[0];
         $kode_barang   = $hasil_explode[1];
+        $satuan        = $hasil_explode[2];
 
         $showstokawal = stok_awal($nama_barang);
 
@@ -58,8 +59,8 @@
         if(!empty($tanggal) && !empty($unit) && !empty($nama_barang) && !empty($jumlah)){
           if(transaksi_barang_keluar($no_transaksi, $keterangan_pengeluaran, $tanggal, $unit, $kode_barang, $nama_barang, $jumlah, $no_surat_pengambilan, $user)){
             if(tambah_stok_barang($stok_aktual, $kode_barang)){
-              if(tambah_kartu_stock($nama_barang, $tanggal, $kode_barang, $keterangan_pengeluaran, $masuk, $jumlah, $stok_aktual, $unit)){
-                if(tambah_stok_opname($nama_barang, $satuan, $saldo_awal, $masuk, $jumlah, $stok_aktual, $keterangan_pengeluaran, $tanggal)){
+              if(tambah_kartu_stock($nama_barang, $kode_barang, $tanggal, $kode_barang, $keterangan_pengeluaran, $masuk, $jumlah, $stok_aktual, $unit)){
+                if(tambah_stok_opname($nama_barang, $kode_barang, $satuan, $saldo_awal, $masuk, $jumlah, $stok_aktual, $keterangan_pengeluaran, $tanggal)){
                   echo "<script>";
                   echo "alert('Transaksi penerimaan barang berhasil!');"; 
                   echo "window.location.href = 'laporan_penerimaan.php';";
@@ -182,7 +183,7 @@
                 <select name="nama_barang" type="text" class="validate selek">
                   <option value="" disabled selected>Pilih Barang</option>
                   <?php while($row_barang = mysqli_fetch_assoc($barang)):?>
-                  <option value="<?=$row_barang['nama'];?>|<?=$row_barang['kode'];?>"><?=$row_barang['kode'];?> | <?=$row_barang['nama'];?></option>
+                  <option value="<?=$row_barang['nama'];?>|<?=$row_barang['kode'];?>|<?=$row_barang['satuan'];?>"><?=$row_barang['kode'];?> | <?=$row_barang['nama'];?></option>
                   <?php endwhile; ?>
                 </select>
                 <label for="nama_barang">Barang</label>

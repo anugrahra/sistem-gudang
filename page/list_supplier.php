@@ -160,7 +160,7 @@
                 <tr>
                     <th>No</th>
                     <th>Kode</th>
-                    <th>Supplier</th>
+                    <th>Pemasok</th>
                     <th>Alamat</th>
                     <th>Telp</th>
                     <th>Email</th>

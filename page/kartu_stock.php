@@ -84,7 +84,7 @@
             <tbody>
             <?php while($row = mysqli_fetch_assoc($stock_barang)):?>
                 <tr>
-                    <td><?=$row['tanggal'];?></td>
+                    <td><?=date('d-m-Y', strtotime($row['tanggal']));?></td>
                     <td><?=$row['keterangan'];?></td>
                     <td><?=$row['masuk'];?></td>
                     <td><?=$row['keluar'];?></td>

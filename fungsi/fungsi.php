@@ -145,8 +145,8 @@ function tambah_barang($nama, $qty, $jenis, $num_kode, $kode){
 	return run($query);
 }
 
-function tambah_stok_opname($nama_barang, $satuan, $saldo_awal, $masuk, $keluar, $saldo_akhir, $keterangan, $tanggal){
-	$query = "INSERT INTO stok_opname (nama_barang, satuan, saldo_awal, masuk, keluar, saldo_akhir, keterangan, bulan) VALUES ('$nama_barang', '$satuan', '$saldo_awal', '$masuk', '$keluar', '$saldo_akhir', '$keterangan', '$tanggal')";
+function tambah_stok_opname($nama_barang, $kode_barang, $satuan, $saldo_awal, $masuk, $keluar, $saldo_akhir, $keterangan, $tanggal){
+	$query = "INSERT INTO stok_opname (nama_barang, kode_barang, satuan, saldo_awal, masuk, keluar, saldo_akhir, keterangan, bulan) VALUES ('$nama_barang', '$kode_barang', '$satuan', '$saldo_awal', '$masuk', '$keluar', '$saldo_akhir', '$keterangan', '$tanggal')";
 
 	return run($query);
 }

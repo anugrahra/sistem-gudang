@@ -18,22 +18,16 @@
           <h4>Selamat Datang, <b><?=$_SESSION['username'];?></b>.</h4>
         </div>
         <div class="row center">
-          <div class="col s4">
+          <div class="col s6">
             <button onClick="pemesanan()" style="padding: 5px;">
               <i class="material-icons large">add_shopping_cart</i>
               <p><b>Pemesanan Barang</b></p>
             </button>
           </div>
-          <div class="col s4">
+          <div class="col s6">
             <button href="" onClick="tampilkan_cariHome()" style="padding: 5px;">
               <i class="material-icons large">search</i>
               <p><b>Pencarian Barang</b></p>
-            </button>
-          </div>
-          <div class="col s4">
-            <button href=""  onClick="tampilkan_pilihLaporan()" style="padding: 5px;">
-              <i class="material-icons large">reorder</i>
-              <p><b>Laporan Barang</b></p>
             </button>
           </div>
         </div>
@@ -49,17 +43,6 @@
             </div>
           </div>
         </form>
-
-        <form action="" method="get" class="tampilkanPilihLaporan z-depth-1" style="display: none;">
-          <div class="row">
-            <div class="col s12">  
-              <div class="input-field col s12">
-                
-              </div>              
-            </div>
-          </div>        
-        </form>
-
       </main>
 
       <?php

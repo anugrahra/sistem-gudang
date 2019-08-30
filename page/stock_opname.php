@@ -69,7 +69,7 @@
           <div class="col s2">
             <select type="text" class="validate selek" name="bulan">
               <option value="" disabled selected>Pilih Bulan</option>
-              <option value="00">Semua</option>
+              <option value="00">SEMUA</option>
               <option value="01">Januari</option>
               <option value="02">Februari</option>
               <option value="03">Maret</option>
@@ -117,7 +117,7 @@
                   <?php while($row = mysqli_fetch_assoc($stock_opname)): ?>
                   <tr>
                     <td><?=$nourut++;?></td>
-                    <td><?=$row['nama_barang'];?></td>
+                    <td><a href="kartu_stock.php?kode=<?=$row['kode_barang'];?>"><?=$row['nama_barang'];?></a></td>
                     <td><?=$row['satuan'];?></td>
                     <td><?=$row['saldo_awal'];?></td>
                     <td><?=$row['masuk'];?></td>

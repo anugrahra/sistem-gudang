@@ -61,7 +61,7 @@
 
             //Recipients
             $mail->setFrom('elang.uptdam@gmail.com', 'Elang UPTD AM Kota Cimahi');
-            $mail->addAddress('dialog.anugrah@gmail.com', 'Anugrah');     // Add a recipient
+            $mail->addAddress('dialog.anugrah@gmail.com');     // Add a recipient
             $mail->addReplyTo('elang.uptdam@gmail.com', 'Elang');
 
             // Content
@@ -73,7 +73,8 @@
             <b>Unit:</b> ' . $unit . '<br>
             <b>Pesanan:</b> ' . $nama_barang . '<br>
             <b>Jumlah:</b> ' . $jumlah . '<br>
-            <b>Keterangan:</b> ' . $keterangan;
+            <b>Keterangan:</b> ' . $keterangan . '
+            <div style="background-color:black; color: white;"><center>ELANG © UPTD AIR MINUM KOTA CIMAHI 2019</center></div>';
             // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
             $mail->send();
