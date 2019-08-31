@@ -19,8 +19,8 @@
       $pengeluaran = tampilkan_pengeluaran();
       $nourut = 1;
 
-      if(isset($_GET['submit'])){
-        $barang = $_GET['kode_barang'];
+      if(isset($_GET['kode_barang'])){
+        $kode = $_GET['kode_barang'];
         $pengeluaran = tampilkan_pengeluaran_by_kode($kode);
       }
 
@@ -47,7 +47,7 @@
               </div>
               <br>
               <div class="col s6">
-                <button class="btn waves-effect waves-light" type="submit" name="submit">Lihat
+                <button class="btn waves-effect waves-light" type="submit">Lihat
                   <i class="material-icons left">content_copy</i>
                 </button>
               </div>

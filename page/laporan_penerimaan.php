@@ -19,8 +19,8 @@
       $penerimaan = tampilkan_penerimaan();
       $nourut = 1;
 
-      if(isset($_POST['submit'])){
-        $barang = $_GET['kode_barang'];
+      if(isset($_GET['kode_barang'])){
+        $kode = $_GET['kode_barang'];
         $penerimaan = tampilkan_penerimaan_by_kode($kode);
       }
       ?>
@@ -32,6 +32,27 @@
             <h4><div class="center"><b>LAPORAN PENERIMAAN</b></div></h4>
           </div>
         </div>
+
+        <form action="" method="get" class="">
+          <div class="row">
+            <div class="col s12">
+              <div class="input-field col s4">
+                <select name="kode_barang" type="text" class="validate selek">
+                  <option value="" disabled selected>Pilih Barang</option>
+                  <?php while($row_barang = mysqli_fetch_assoc($barangnya)):?>
+                  <option value="<?=$row_barang['kode'];?>"><?=$row_barang['kode'];?> | <?=$row_barang['nama'];?></option>
+                  <?php endwhile; ?>
+                </select>
+              </div>
+              <br>
+              <div class="col s6">
+                <button class="btn waves-effect waves-light" type="submit">Lihat
+                  <i class="material-icons left">content_copy</i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
 
         <div id="cetakLaporan">
           

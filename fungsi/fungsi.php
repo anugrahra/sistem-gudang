@@ -431,7 +431,7 @@ function hapus_user($id){
 function tampilkan_penerimaan_by_kode($kode){
 	global $link;
 
-	$query = "SELECT * FROM penerimaan WHERE kode = '$kode' ORDER BY id DESC";
+	$query = "SELECT * FROM penerimaan WHERE kode_barang = '$kode' ORDER BY id DESC";
 	$result = mysqli_query($link, $query);
 
 	return $result;	
@@ -450,6 +450,15 @@ function tampilkan_pengeluaran_by_barang($barang){
 	global $link;
 
 	$query = "SELECT * FROM pengeluaran WHERE barang = '$barang' ORDER BY id DESC";
+	$result = mysqli_query($link, $query);
+
+	return $result;	
+}
+
+function tampilkan_pengeluaran_by_kode($kode){
+	global $link;
+
+	$query = "SELECT * FROM pengeluaran WHERE kode_barang = '$kode' ORDER BY id DESC";
 	$result = mysqli_query($link, $query);
 
 	return $result;	

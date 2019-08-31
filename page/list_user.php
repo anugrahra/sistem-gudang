@@ -47,13 +47,13 @@
 
 				<div class="row">
 					<div class="col s12">
-						<h4><center><b>LIST USER</b></center></h4>
+						<h4><center><b>DAFTAR PENGGUNA</b></center></h4>
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="col s12">
-						<button class="btn waves-effect waves-light" onClick="tampilkan_form()">Tambah User
+						<button class="btn waves-effect waves-light" onClick="tampilkan_form()">Tambah Pengguna
 							<i class="material-icons left">arrow_forward</i>
 						</button>
 					</div>
@@ -63,19 +63,19 @@
 					<div class="row">
 						<div class="col s12">  
 							<div class="input-field col s6">
-								<label for="username">Username</label>
+								<label for="username">Nama Pengguna</label>
 								<input name="username" type="text" class="validate">
 							</div>
 						</div>
             <div class="col s12">  
               <div class="input-field col s6">
-                <label for="password">Password</label>
+                <label for="password">Kata Sandi</label>
                 <input name="password" type="password" class="validate">
               </div>
             </div>
             <div class="col s12">  
               <div class="input-field col s6">
-                <label for="repassword">Ulangi Password</label>
+                <label for="repassword">Ulangi Kata Sandi</label>
                 <input name="repassword" type="password" class="validate">
               </div>
             </div>
@@ -109,10 +109,10 @@
 							<thead>
 								<tr>
 									<th>No</th>
-									<th>User</th>
-	            		<th>Level</th>
-	            		<th></th>
-	            		<th></th>
+									<th>Pengguna</th>
+									<th>Tingkat</th>
+									<th></th>
+									<th></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -135,7 +135,7 @@
 									<td><?=$nourut++;?></td>
 									<td><?=$row['username'];?></td>
 									<td><?=$level;?></td>
-									<td><a href="edit_list_user.php?id=<?=$row['id'];?>" style="display: <?=$sembunyi;?>;">Edit</a></td>
+									<td><a href="edit_list_user.php?id=<?=$row['id'];?>" style="display: <?=$sembunyi;?>;">Ubah</a></td>
 									<td><a href="hapus_user.php?id=<?=$row['id'];?>" class="red-text" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')"  style="display: <?=$sembunyi;?>;">Hapus</a></td>
 								</tr>
 								<?php endwhile; ?>
