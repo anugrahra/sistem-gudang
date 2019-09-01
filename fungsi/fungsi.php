@@ -145,6 +145,32 @@ function tambah_barang($nama, $qty, $jenis, $num_kode, $kode){
 	return run($query);
 }
 
+function cek_barang_opname($kode_barang, $tanggal){
+	global $link;
+
+	$bulan = date("m",strtotime($tanggal));
+	$query = "SELECT * FROM stok_opname WHERE kode_barang = '$kode_barang' AND MONTH(bulan) = '$bulan'";
+	$result = mysqli_query($link, $query) or die ('gagal ngecek barang opname');
+
+	return $result;
+}
+
+function update_stok_opname_terima($saldo_awal, $masuk, $saldo_akhir, $kode_barang, $tanggal){
+	$bulan = date("m", strtotime($tanggal));
+
+	$query = "UPDATE stok_opname SET saldo_awal='$saldo_awal', masuk= masuk + '$masuk', keluar='$keluar', saldo_akhir='$saldo_akhir' WHERE kode_barang = '$kode_barang' AND MONTH(bulan) = '$bulan'";
+
+	return run($query);
+}
+
+function update_stok_opname_keluar($saldo_awal, $keluar, $saldo_akhir, $kode_barang, $tanggal){
+	$bulan = date("m", strtotime($tanggal));
+
+	$query = "UPDATE stok_opname SET saldo_awal='$saldo_awal', keluar = keluar + '$keluar', keluar='$keluar', saldo_akhir='$saldo_akhir' WHERE kode_barang = '$kode_barang' AND MONTH(bulan) = '$bulan'";
+
+	return run($query);
+}
+
 function tambah_stok_opname($nama_barang, $kode_barang, $satuan, $saldo_awal, $masuk, $keluar, $saldo_akhir, $keterangan, $tanggal){
 	$query = "INSERT INTO stok_opname (nama_barang, kode_barang, satuan, saldo_awal, masuk, keluar, saldo_akhir, keterangan, bulan) VALUES ('$nama_barang', '$kode_barang', '$satuan', '$saldo_awal', '$masuk', '$keluar', '$saldo_akhir', '$keterangan', '$tanggal')";
 

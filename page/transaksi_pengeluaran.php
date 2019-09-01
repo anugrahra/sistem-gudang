@@ -60,13 +60,24 @@
           if(transaksi_barang_keluar($no_transaksi, $keterangan_pengeluaran, $tanggal, $unit, $kode_barang, $nama_barang, $jumlah, $no_surat_pengambilan, $user)){
             if(tambah_stok_barang($stok_aktual, $kode_barang)){
               if(tambah_kartu_stock($nama_barang, $kode_barang, $tanggal, $kode_barang, $keterangan_pengeluaran, $masuk, $jumlah, $stok_aktual, $unit)){
-                if(tambah_stok_opname($nama_barang, $kode_barang, $satuan, $saldo_awal, $masuk, $jumlah, $stok_aktual, $keterangan_pengeluaran, $tanggal)){
-                  echo "<script>";
-                  echo "alert('Transaksi penerimaan barang berhasil!');"; 
-                  echo "window.location.href = 'laporan_penerimaan.php';";
-                  echo "</script>";
+                if(mysqli_num_rows(cek_barang_opname($kode_barang, $tanggal)) > 0){
+                  if(update_stok_opname_keluar($saldo_awal, $jumlah, $stok_aktual, $kode_barang, $tanggal)){
+                    echo "<script>";
+                    echo "alert('Transaksi penerimaan barang berhasil!');"; 
+                    echo "window.location.href = 'laporan_penerimaan.php';";
+                    echo "</script>";  
+                  } else {
+                    echo "<script>alert('Gagal update stock opname!');</script>";  
+                  }
                 } else {
-                  echo "<script>alert('Gagal menambahkan stock opname!');</script>";
+                  if(tambah_stok_opname($nama_barang, $kode_barang, $satuan, $saldo_awal, $masuk, $jumlah, $stok_aktual, $keterangan_pengeluaran, $tanggal)){
+                    echo "<script>";
+                    echo "alert('Transaksi penerimaan barang berhasil!');"; 
+                    echo "window.location.href = 'laporan_penerimaan.php';";
+                    echo "</script>";
+                  } else {
+                    echo "<script>alert('Gagal menambahkan stock opname!');</script>";
+                  }
                 }
               } else {
                 echo "<script>alert('Transaksi gagal!');</script>";

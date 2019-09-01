@@ -60,13 +60,24 @@
           if(transaksi_barang_masuk($keterangan_penerimaan, $tanggal, $supplier, $kode_barang, $nama_barang, $jumlah, $user, $no_surat_jalan)){
             if(tambah_stok_barang($stok_aktual, $kode_barang)){
               if(tambah_kartu_stock($nama_barang, $tanggal, $kode_barang, $keterangan_penerimaan, $jumlah, $keluar, $stok_aktual, $pengguna)){
-                if(tambah_stok_opname($nama_barang, $kode_barang, $satuan, $saldo_awal, $jumlah, $keluar, $stok_aktual, $keterangan_penerimaan, $tanggal)){
-                  echo "<script>";
-                  echo "alert('Transaksi penerimaan barang berhasil!');"; 
-                  echo "window.location.href = 'laporan_penerimaan.php';";
-                  echo "</script>";
+                if(mysqli_num_rows(cek_barang_opname($kode_barang, $tanggal)) > 0){
+                  if(update_stok_opname_terima($saldo_awal, $jumlah, $stok_aktual, $kode_barang, $tanggal)){
+                    echo "<script>";
+                    echo "alert('Transaksi penerimaan barang berhasil!');"; 
+                    echo "window.location.href = 'laporan_penerimaan.php';";
+                    echo "</script>";
+                  } else {
+                    echo "<script>alert('Gagal update stock opname!');</script>";
+                  }
                 } else {
-                  echo "<script>alert('Gagal menambahkan stock opname!');</script>";
+                  if(tambah_stok_opname($nama_barang, $kode_barang, $satuan, $saldo_awal, $jumlah, $keluar, $stok_aktual, $keterangan_penerimaan, $tanggal)){
+                    echo "<script>";
+                    echo "alert('Transaksi penerimaan barang berhasil!');"; 
+                    echo "window.location.href = 'laporan_penerimaan.php';";
+                    echo "</script>";
+                  } else {
+                    echo "<script>alert('Gagal menambahkan stock opname!');</script>";
+                  }
                 }
               } else {
                 echo "<script>alert('Transaksi gagal!');</script>";
