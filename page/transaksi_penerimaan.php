@@ -56,7 +56,7 @@
 
         $stok_aktual = $stok_awal + $jumlah;
 
-        if(!empty($tanggal) && !empty($supplier) && !empty($nama_barang) && !empty($jumlah) && !empty($no_surat_jalan)){
+        if(!empty($keterangan_penerimaan) && !empty($tanggal) && !empty($supplier) && !empty($jumlah) && !empty($no_surat_jalan) && !empty($user) && !empty($nama_barang) && !empty($kode_barang) && !empty($satuan)){
           if(transaksi_barang_masuk($keterangan_penerimaan, $tanggal, $supplier, $kode_barang, $nama_barang, $jumlah, $user, $no_surat_jalan)){
             if(tambah_stok_barang($stok_aktual, $kode_barang)){
               if(tambah_kartu_stock($nama_barang, $tanggal, $kode_barang, $keterangan_penerimaan, $jumlah, $keluar, $stok_aktual, $pengguna)){
