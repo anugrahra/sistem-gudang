@@ -39,6 +39,10 @@ main {
   font-style: italic;
 }
 
+.transaksiw {
+  border: 1px solid black;
+}
+
 .opname {
   border: 2px solid black;
 }

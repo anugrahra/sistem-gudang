@@ -102,50 +102,6 @@
           </div>
         </div>
 
-        <div class="row">
-          <div class="col s12">
-            <button class="btn waves-effect waves-light" onClick="tampilkan_listPenerimaan()">Daftar Pengeluaran
-              <i class="material-icons left">keyboard_arrow_down</i>
-            </button>
-          </div>
-        </div>
-
-        <div class="row tampilkanListPenerimaan" style="display: none;">
-          <div class="col s12">
-            <table class="striped responsive-table">
-              <thead>
-                <tr>
-                    <th>No</th>
-                    <th>No Transaksi</th>
-                    <th>No Surat Pengambilan</th>
-                    <th>Ket. Pengeluaran</th>
-                    <th>Tanggal</th>
-                    <th>Penerima</th>
-                    <th>Barang</th>
-                    <th>Jumlah</th>
-                    <th>Petugas</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <?php while($row = mysqli_fetch_assoc($pengeluaran)):?>
-                <tr>
-                  <td><?=$nourut++;?></td>
-                  <td><?=$row['no_transaksi'];?></td>
-                  <td><?=$row['no_surat_pengambilan'];?></td>
-                  <td><?=$row['keterangan'];?></td>
-                  <td><?=date('d-m-Y', strtotime($row['tanggal']));?></td>
-                  <td><?=$row['unit'];?></td>
-                  <td><?=$row['barang'];?></td>
-                  <td><?=$row['jumlah'];?></td>
-                  <td><?=$row['petugas'];?></td>
-                </tr>
-                <?php endwhile; ?>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
         <form action="" method="post">
           <div class="row">
             <div class="col s12">  

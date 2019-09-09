@@ -102,51 +102,7 @@
           </div>
         </div>
 
-        <div class="row">
-          <div class="col s12">
-            <button class="btn waves-effect waves-light" onClick="tampilkan_listPenerimaan()">Daftar Penerimaan
-              <i class="material-icons left">keyboard_arrow_down</i>
-            </button>
-          </div>
-        </div>
-
-        <div class="row tampilkanListPenerimaan" style="display: none;">
-          <div class="col s12">
-            <table class="striped responsive-table">
-              <thead>
-                <tr>
-                    <th>No</th>
-                    <th>No Surat Jalan</th>
-                    <th>Ket. Penerimaan</th>
-                    <th>Tanggal</th>
-                    <th>Supplier</th>
-                    <th>Kode Barang</th>
-                    <th>Barang</th>
-                    <th>Jumlah</th>
-                    <th>Penerima</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <?php while($row = mysqli_fetch_assoc($penerimaan)):?>
-                <tr>
-                  <td><?=$nourut++;?></td>
-                  <td><?=$row['no_surat_jalan'];?></td>
-                  <td><?=$row['keterangan'];?></td>
-                  <td><?= date('d-m-Y', strtotime($row['tanggal']));?></td>
-                  <td><?=$row['supplier'];?></td>
-                  <td><?=$row['kode_barang'];?></td>
-                  <td><?=$row['barang'];?></td>
-                  <td><?=$row['jumlah'];?></td>
-                  <td><?=$row['user'];?></td>
-                </tr>
-                <?php endwhile; ?>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <form action="" method="post">
+        <form action="" method="post" class="transaksiw">
           <div class="row">
             <div class="col s12">  
               <div class="input-field col s6">

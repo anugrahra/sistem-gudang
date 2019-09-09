@@ -155,6 +155,15 @@ function cek_barang_opname($kode_barang, $tanggal){
 	return $result;
 }
 
+function cek_surat_jalan($no_surat_jalan, $tabelnya){
+	global $link;
+
+	$query = "SELECT * FROM $tabelnya WHERE no_surat_jalan = '$no_surat_jalan'";
+	$result = mysqli_query($link, $query) or die ('gagal ngecek surat jalan');
+
+	return $result;
+}
+
 function update_stok_opname_terima($saldo_awal, $masuk, $saldo_akhir, $kode_barang, $tanggal){
 	$bulan = date("m", strtotime($tanggal));
 
@@ -458,6 +467,15 @@ function tampilkan_penerimaan_by_kode($kode){
 	global $link;
 
 	$query = "SELECT * FROM penerimaan WHERE kode_barang = '$kode' ORDER BY id DESC";
+	$result = mysqli_query($link, $query);
+
+	return $result;	
+}
+
+function tampilkan_penerimaan_by_surat_jalan($no_surat_jalan){
+	global $link;
+
+	$query = "SELECT * FROM penerimaan WHERE no_surat_jalan = '$no_surat_jalan' ORDER BY id DESC";
 	$result = mysqli_query($link, $query);
 
 	return $result;	

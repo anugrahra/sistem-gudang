@@ -23,7 +23,7 @@
 
         <div class="row">
           <div class="col s12">
-            <h4><div class="center"><b>LAPORAN PENERIMAAN</b></div></h4>
+            <h4><div class="center"><b>LAPORAN PEMESANAN</b></div></h4>
           </div>
         </div>
 
@@ -31,7 +31,7 @@
           
           <div class="row">
             <div class="col s12">
-              <table class="striped responsive-table">
+              <table class="highlight responsive-table centered opname">
                 <thead>
                   <tr>
                       <th>No</th>

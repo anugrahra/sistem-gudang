@@ -55,21 +55,17 @@
 </ul>
 
 <ul id="transaksi-content" class="dropdown-content">
+  <li><a href="pemesanan.php">Pemesanan</a></li>
   <li><a href="transaksi_penerimaan.php">Penerimaan</a></li>
   <li><a href="transaksi_pengeluaran.php">Pengeluaran</a></li>
-  <li class="divider"></li>
-  <li><a href="pemesanan.php">Pemesanan</a></li>
-  <li class="divider"></li>
-  <li><a href="kehilangan.php">Kehilangan</a></li>
 </ul>
 
 <ul id="laporan-content" class="dropdown-content">
   <li><a href="stock_opname.php">Stock Opname</a></li>
   <li class="divider"></li>
+  <li><a href="laporan_pemesanan.php">Laporan Pemesanan</a></li>
   <li><a href="laporan_penerimaan.php">Laporan Penerimaan</a></li>
   <li><a href="laporan_pengeluaran.php">Laporan Pengeluaran</a></li>
-  <li class="divider"></li>
-  <li><a href="laporan_pemesanan.php">Laporan Pemesanan</a></li>
 </ul>
 
 <!-- Dropdown Content Side -->
@@ -82,21 +78,17 @@
 </ul>
 
 <ul id="transaksi-content-side" class="dropdown-content">
+  <li><a href="pemesanan.php">Pemesanan</a></li>
   <li><a href="transaksi_penerimaan.php">Penerimaan</a></li>
   <li><a href="transaksi_pengeluaran.php">Pengeluaran</a></li>
-  <li class="divider"></li>
-  <li><a href="pemesanan.php">Pemesanan</a></li>
-  <li class="divider"></li>
-  <li><a href="kehilangan.php">Kehilangan</a></li>
 </ul>
 
 <ul id="laporan-content-side" class="dropdown-content">
   <li><a href="stock_opname.php">Stock Opname</a></li>
   <li class="divider"></li>
+  <li><a href="laporan_pemesanan.php">Laporan Pemesanan</a></li>
   <li><a href="laporan_penerimaan.php">Laporan Penerimaan</a></li>
   <li><a href="laporan_pengeluaran.php">Laporan Pengeluaran</a></li>
-  <li class="divider"></li>
-  <li><a href="laporan_pemesanan.php">Laporan Pemesanan</a></li>
 </ul>
 
 </header>

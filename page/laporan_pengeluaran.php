@@ -59,7 +59,7 @@
 
           <div class="row">
             <div class="col s12">
-              <table class="striped responsive-table">
+              <table class="highlight responsive-table centered opname">
                 <thead>
                   <tr>
                       <th>No</th>

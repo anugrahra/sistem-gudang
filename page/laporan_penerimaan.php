@@ -58,16 +58,14 @@
           
           <div class="row">
             <div class="col s12">
-              <table class="striped responsive-table">
+              <table class="highlight responsive-table centered opname">
                 <thead>
                   <tr>
                       <th>No</th>
-                      <th>Barang</th>
                       <th>No Surat Jalan</th>
                       <th>Ket. Penerimaan</th>
                       <th>Tanggal</th>
                       <th>Supplier</th>
-                      <th>Jumlah</th>
                       <th>Penerima</th>
                   </tr>
                 </thead>
@@ -76,12 +74,10 @@
                   <?php while($row = mysqli_fetch_assoc($penerimaan)):?>
                   <tr>
                     <td><?=$nourut++;?></td>
-                    <td><a href="kartu_stock.php?kode=<?=$row['kode_barang'];?>"><?=$row['barang'];?></a></td>
-                    <td><?=$row['no_surat_jalan'];?></td>
+                    <td><a href="laporan_penerimaan_surat_jalan.php?suratjalan=<?=$row['no_surat_jalan'];?>"><?=$row['no_surat_jalan'];?></a></td>
                     <td><?=$row['keterangan'];?></td>
                     <td><?= date('d-m-Y', strtotime($row['tanggal']));?></td>
                     <td><?=$row['supplier'];?></td>
-                    <td><?=$row['jumlah'];?></td>
                     <td><?=$row['user'];?></td>
                   </tr>
                   <?php endwhile; ?>
