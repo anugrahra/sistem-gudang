@@ -27,15 +27,17 @@
 
       if(isset($_POST['submit'])){
         $no_order     = $_POST['no_order'];
+        $tanggal      = $_POST['tanggal'];
         $nama_pemesan = $_POST['nama_pemesan'];
         $unit         = $_POST['unit'];
         $nama_barang  = $_POST['nama_barang'];
         $jumlah       = $_POST['jumlah'];
+        $satuan       = $_POST['satuan'];
         $keterangan   = $_POST['keterangan'];
 
-        if(!empty($no_order) && !empty($nama_pemesan) && !empty($nama_barang) && !empty($jumlah)){
+        if(!empty($no_order) && !empty($tanggal) && !empty($nama_pemesan) && !empty($unit)  && !empty($nama_barang) && !empty($jumlah) && !empty($satuan)){
           
-          if(transaksi_pemesanan($no_order, $nama_pemesan, $unit, $nama_barang, $jumlah, $keterangan)){
+          if(transaksi_pemesanan($no_order, $tanggal, $nama_pemesan, $unit, $nama_barang, $jumlah, $satuan, $keterangan)){
               echo "<script>"; 
               echo "alert('Pemesanan barang berhasil!');"; 
               echo "window.location.href = 'laporan_pemesanan.php';";
@@ -69,10 +71,11 @@
             $mail->Subject = 'Pemesanan Barang';
             $mail->Body    = '<div style="background-color:#2196F3; color: white;"><h1><center>Pemesanan Barang</center></h1></div>
             <b>No Order:</b> ' . $no_order . '<br>
-            <b>Nama Pemesan:</b> ' . $nama_pemesan . '<br>
+            <b>Tanggal:</b> ' . $tanggal . '<br>
+            <b>Pemesan:</b> ' . $nama_pemesan . '<br>
             <b>Unit:</b> ' . $unit . '<br>
             <b>Pesanan:</b> ' . $nama_barang . '<br>
-            <b>Jumlah:</b> ' . $jumlah . '<br>
+            <b>Jumlah:</b> ' . $jumlah . ' ' . $satuan . '<br>
             <b>Keterangan:</b> ' . $keterangan . '
             <div style="background-color:black; color: white;"><center>ELANG © UPTD AIR MINUM KOTA CIMAHI 2019</center></div>';
             // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
@@ -106,7 +109,15 @@
           <div class="row">
             <div class="col s12">  
               <div class="input-field col s6">
-                <label for="nama_pemesan">Nama Pemesan</label>
+                <label for="tanggal">Tanggal</label>
+                <input name="tanggal" type="date" class="validate" id="tglSekarang">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">  
+              <div class="input-field col s6">
+                <label for="nama_pemesan">Pemesan</label>
                 <input name="nama_pemesan" type="text" class="validate">
               </div>
             </div>
@@ -115,12 +126,12 @@
             <div class="col s12">
               <div class="input-field col s6">
                 <select name="unit" type="text" class="validate selek">
-                  <option value="" disabled selected>Pilih Unit</option>
+                  <option value="" disabled selected>Pilih Bagian</option>
                   <?php while($row_unit = mysqli_fetch_assoc($tampilkan_unit)):?>
                   <option value="<?=$row_unit['nama'];?>"><?=$row_unit['nama'];?></option>
                   <?php endwhile; ?>
                 </select>
-                <label for="supplier">Unit</label>
+                <label for="supplier">Bagian</label>
               </div>
             </div>
           </div>
@@ -137,6 +148,14 @@
               <div class="input-field col s6">
                 <label for="jumlah">Jumlah</label>
                 <input name="jumlah" type="number" class="validate">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <div class="input-field col s6">
+                <label for="satuan">Satuan</label>
+                <input name="satuan" type="text" class="validate">
               </div>
             </div>
           </div>

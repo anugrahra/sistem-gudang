@@ -40,7 +40,7 @@
         $supplier              = $_POST['supplier'];
         $jumlah                = $_POST['jumlah'];
         $no_surat_jalan        = $_POST['no_surat_jalan'];
-        $user                  = $_SESSION['username'];
+        $user                  = $_POST['penerima'];
 
         $kodedannama   = $_POST['nama_barang'];
         $hasil_explode = explode('|', $kodedannama);
@@ -114,14 +114,6 @@
           <div class="row">
             <div class="col s12">
               <div class="input-field col s6">
-                <label for="keterangan_penerimaan">Keterangan Penerimaan</label>
-                <input name="keterangan_penerimaan" type="text" class="validate">
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12">
-              <div class="input-field col s6">
                 <label for="tanggal">Tanggal</label>
                 <input name="tanggal" type="date" class="validate" id="tglSekarang">
               </div>
@@ -137,6 +129,14 @@
                   <?php endwhile; ?>
                 </select>
                 <label for="supplier">Pemasok</label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">  
+              <div class="input-field col s6">
+                <label for="penerima">Penerima</label>
+                <input name="penerima" type="text" class="validate">
               </div>
             </div>
           </div>
@@ -158,6 +158,14 @@
               <div class="input-field col s6">
                 <label for="jumlah">Jumlah</label>
                 <input name="jumlah" type="number" class="validate">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <div class="input-field col s6">
+                <label for="keterangan_penerimaan">Keterangan</label>
+                <input name="keterangan_penerimaan" type="text" class="validate">
               </div>
             </div>
           </div>

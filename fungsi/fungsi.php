@@ -238,17 +238,17 @@ function transaksi_barang_masuk($keterangan_penerimaan, $tanggal, $supplier, $ko
 	return run($query);
 }
 
-function transaksi_pemesanan($no_order, $nama_pemesan, $unit, $nama_barang, $jumlah, $keterangan){
-	$query = "INSERT INTO pemesanan(no_order, nama_pemesan, unit, nama_barang, jumlah, keterangan) VALUES ('$no_order', '$nama_pemesan', '$unit', '$nama_barang', '$jumlah', '$keterangan')";
+function transaksi_pemesanan($no_order, $tanggal, $nama_pemesan, $unit, $nama_barang, $jumlah, $satuan, $keterangan){
+	$query = "INSERT INTO pemesanan(no_order, tanggal, nama_pemesan, unit, nama_barang, jumlah, satuan, keterangan) VALUES ('$no_order', '$tanggal', '$nama_pemesan', '$unit', '$nama_barang', '$jumlah', '$satuan',  '$keterangan')";
 
 	return run($query);
 }
 
-function transaksi_barang_keluar($no_transaksi, $keterangan_pengeluaran, $tanggal, $unit, $kode_barang, $nama_barang, $jumlah, $no_surat_pengambilan, $user){
+function transaksi_barang_keluar($no_transaksi, $keterangan_pengeluaran, $tanggal, $unit, $penerima, $kode_barang, $nama_barang, $jumlah, $no_surat_pengambilan, $user){
 	$no_transaksi 		    = escape($no_transaksi);
 	$keterangan_pengeluaran = escape($keterangan_pengeluaran);
 
-	$query = "INSERT INTO pengeluaran (no_transaksi, keterangan, tanggal, unit, kode_barang, barang, jumlah, no_surat_pengambilan, petugas) VALUES ('$no_transaksi', '$keterangan_pengeluaran', '$tanggal', '$unit', '$kode_barang', '$nama_barang', '$jumlah', '$no_surat_pengambilan', '$user')";
+	$query = "INSERT INTO pengeluaran (no_transaksi, keterangan, tanggal, unit, penerima, kode_barang, barang, jumlah, no_surat_pengambilan, petugas) VALUES ('$no_transaksi', '$keterangan_pengeluaran', '$tanggal', '$unit', '$penerima', '$kode_barang', '$nama_barang', '$jumlah', '$no_surat_pengambilan', '$user')";
 
 	return run($query);
 }
@@ -351,6 +351,33 @@ function opname_per_bulan($bulan){
 	global $link;
 
 	$query = "SELECT * FROM stok_opname WHERE MONTH(bulan)=$bulan";
+	$result = mysqli_query($link, $query);
+
+	return $result;
+}
+
+function penerimaan_per_bulan($bulan){
+	global $link;
+
+	$query = "SELECT * FROM penerimaan WHERE MONTH(tanggal)=$bulan";
+	$result = mysqli_query($link, $query);
+
+	return $result;
+}
+
+function pengeluaran_per_bulan($bulan){
+	global $link;
+
+	$query = "SELECT * FROM pengeluaran WHERE MONTH(tanggal)=$bulan";
+	$result = mysqli_query($link, $query);
+
+	return $result;
+}
+
+function pemesanan_per_bulan($bulan){
+	global $link;
+
+	$query = "SELECT * FROM pemesanan WHERE MONTH(tanggal)=$bulan";
 	$result = mysqli_query($link, $query);
 
 	return $result;

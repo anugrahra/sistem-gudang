@@ -40,6 +40,7 @@
         $unit                   = $_POST['unit'];
         $jumlah                 = $_POST['jumlah'];
         $no_surat_pengambilan   = $_POST['no_surat_pengambilan'];
+        $penerima               = $_POST['penerima'];
         $user                   = $_SESSION['username'];
 
         $kodedannama   = $_POST['nama_barang'];
@@ -56,8 +57,8 @@
 
         $stok_aktual = $stok_awal - $jumlah;
 
-        if(!empty($no_transaksi) && !empty($keterangan_pengeluaran) && !empty($tanggal) && !empty($unit) && !empty($jumlah) && !empty($no_surat_pengambilan) && !empty($user) && !empty($nama_barang) && !empty($kode_barang) && !empty($satuan) && !empty($stok_aktual)){
-          if(transaksi_barang_keluar($no_transaksi, $keterangan_pengeluaran, $tanggal, $unit, $kode_barang, $nama_barang, $jumlah, $no_surat_pengambilan, $user)){
+        if(!empty($no_transaksi) && !empty($keterangan_pengeluaran) && !empty($tanggal) && !empty($unit) && !empty($jumlah) && !empty($no_surat_pengambilan) && !empty($user)  && !empty($penerima) && !empty($nama_barang) && !empty($kode_barang) && !empty($satuan) && !empty($stok_aktual)){
+          if(transaksi_barang_keluar($no_transaksi, $keterangan_pengeluaran, $tanggal, $unit, $penerima, $kode_barang, $nama_barang, $jumlah, $no_surat_pengambilan, $user)){
             if(tambah_stok_barang($stok_aktual, $kode_barang)){
               if(tambah_kartu_stock($nama_barang, $kode_barang, $tanggal, $kode_barang, $keterangan_pengeluaran, $masuk, $jumlah, $stok_aktual, $unit)){
                 if(mysqli_num_rows(cek_barang_opname($kode_barang, $tanggal)) > 0){
@@ -106,24 +107,8 @@
           <div class="row">
             <div class="col s12">  
               <div class="input-field col s6">
-                <label for="no_transaksi">No Transaksi</label>
-                <input name="no_transaksi" type="text" class="validate">
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12">  
-              <div class="input-field col s6">
                 <label for="no_surat_pengambilan">No Surat Pengambilan</label>
                 <input name="no_surat_pengambilan" type="text" class="validate">
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12">
-              <div class="input-field col s6">
-                <label for="keterangan_pengeluaran">Keterangan Pengeluaran</label>
-                <input name="keterangan_pengeluaran" type="text" class="validate">
               </div>
             </div>
           </div>
@@ -138,9 +123,21 @@
           <div class="row">
             <div class="col s12">
               <div class="input-field col s6">
-                <label for="unit">Penerima</label>
-                <input name="unit" type="text" class="validate">
+                <label for="penerima">Pengambil Barang</label>
+                <input name="penerima" type="text" class="validate">
               </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <div class="input-field col s6">
+                <select name="unit" type="text" class="validate selek">
+                  <option value="" disabled selected>Pilih Bagian</option>
+                  <?php while($row_unit = mysqli_fetch_assoc($tampilkan_unit)):?>
+                  <option value="<?=$row_unit['nama'];?>"><?=$row_unit['nama'];?></option>
+                  <?php endwhile; ?>
+                </select>
+                <label for="unit">Bagian</label>
               </div>
             </div>
           </div>
@@ -153,7 +150,7 @@
                   <option value="<?=$row_barang['nama'];?>|<?=$row_barang['kode'];?>|<?=$row_barang['satuan'];?>"><?=$row_barang['kode'];?> | <?=$row_barang['nama'];?></option>
                   <?php endwhile; ?>
                 </select>
-                <label for="nama_barang">Barang</label>
+                <label for="nama_barang">Nama Barang</label>
               </div>
             </div>
           </div>
@@ -162,6 +159,14 @@
               <div class="input-field col s6">
                 <label for="jumlah">Jumlah</label>
                 <input name="jumlah" type="number" class="validate">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <div class="input-field col s6">
+                <label for="keterangan_pengeluaran">Keterangan Pengeluaran</label>
+                <input name="keterangan_pengeluaran" type="text" class="validate">
               </div>
             </div>
           </div>
