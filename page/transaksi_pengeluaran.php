@@ -63,7 +63,7 @@
                   if(update_stok_opname_keluar($saldo_awal, $jumlah, $stok_aktual, $kode_barang, $tanggal)){
                     echo "<script>";
                     echo "alert('Transaksi penerimaan barang berhasil!');"; 
-                    echo "window.location.href = 'laporan_penerimaan.php';";
+                    echo "window.location.href = 'laporan_pengeluaran.php';";
                     echo "</script>";  
                   } else {
                     echo "<script>alert('Gagal update stock opname!');</script>";  
@@ -72,7 +72,7 @@
                   if(tambah_stok_opname($nama_barang, $kode_barang, $satuan, $saldo_awal, $masuk, $jumlah, $stok_aktual, $keterangan_pengeluaran, $tanggal)){
                     echo "<script>";
                     echo "alert('Transaksi penerimaan barang berhasil!');"; 
-                    echo "window.location.href = 'laporan_penerimaan.php';";
+                    echo "window.location.href = 'laporan_pengeluaran.php';";
                     echo "</script>";
                   } else {
                     echo "<script>alert('Gagal menambahkan stock opname!');</script>";

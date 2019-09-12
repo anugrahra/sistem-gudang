@@ -301,7 +301,7 @@ function transaksi_pemesanan($no_order, $tanggal, $nama_pemesan, $unit, $nama_ba
 
 function transaksi_barang_keluar($keterangan_pengeluaran, $tanggal, $unit, $penerima, $kode_barang, $nama_barang, $jumlah, $no_surat_pengambilan, $satuan){
 
-	$query = "INSERT INTO pengeluaran (keterangan, tanggal, unit, penerima, kode_barang, barang, jumlah, no_surat_pengambilan, satuan) VALUES ($keterangan_pengeluaran', '$tanggal', '$unit', '$penerima', '$kode_barang', '$nama_barang', '$jumlah', '$no_surat_pengambilan', '$satuan')";
+	$query = "INSERT INTO pengeluaran (keterangan, tanggal, unit, penerima, kode_barang, barang, jumlah, no_surat_pengambilan, satuan) VALUES ('$keterangan_pengeluaran', '$tanggal', '$unit', '$penerima', '$kode_barang', '$nama_barang', '$jumlah', '$no_surat_pengambilan', '$satuan')";
 
 	return run($query);
 }
