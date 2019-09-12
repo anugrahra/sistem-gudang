@@ -13,6 +13,25 @@
         require_once "../aset/view/header.php";
         require_once "../fungsi/db.php";
         require_once "../fungsi/fungsi.php";
+
+        //SETTING FUNGSI
+        $surat = $_GET['surat'];
+
+        if(isset($_GET['surat'])){
+            $detaiw = tampilkan_pemesanan_by_surat($surat);
+            $detail = tampilkan_pemesanan_by_surat($surat);
+            while ($row = mysqli_fetch_assoc($detail)){
+                $no = 1;
+                $tanggal = $row['tanggal'];
+                $pemesan = $row['nama_pemesan'];
+                $noorder = $row['no_order'];
+                $bagian = $row['unit'];
+                $namabarang = $row['nama_barang'];
+                $jumlah = $row['jumlah'];
+                $satuan = $row['satuan'];
+                $keterangan = $row['keterangan'];
+            }
+        }
         ?>
 
         <main>    
@@ -30,15 +49,15 @@
                     <table class="tablestokbarang">
                         <tr>
                             <th>Tanggal</th>
-                            <td>tanggal</td>
+                            <td><?=date('d-m-Y', strtotime($tanggal));?></td>
                         </tr>
                         <tr>
                             <th>Pemesan</th>
-                            <td>pemesan</td>
+                            <td><?=$pemesan;?></td>
                         </tr>
                         <tr>
                             <th>Bagian</th>
-                            <td>bagian</td>
+                            <td><?=$bagian;?></td>
                         </tr>
                     </table>
                 </div>
@@ -47,7 +66,7 @@
                     <table class="tablestokbarang">
                         <tr>
                             <th>No. Order</th>
-                            <td>no order</td>
+                            <td><?=$noorder;?></td>
                         </tr>
                     </table>
                 </div>
@@ -67,13 +86,15 @@
                 </thead>
 
                 <tbody>
+                <?php while($riw = mysqli_fetch_assoc($detaiw)):?>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><?=$no++;?></td>
+                        <td><?=$riw['nama_barang'];?></td>
+                        <td><?=$riw['jumlah'];?></td>
+                        <td><?=$riw['satuan'];?></td>
+                        <td><?=$riw['keterangan'];?></td>
                     </tr>
+                <?php endwhile;?>
                 </tbody>
                 </table>
             </div>

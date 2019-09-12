@@ -112,7 +112,7 @@
                   <?php while($row = mysqli_fetch_assoc($pemesanan)):?>
                   <tr>
                     <td><?=$nourut++;?></td>
-                    <td><?=$row['no_order'];?></a></td>
+                    <td><a href="detail_pemesanan.php?surat=<?=$row['no_order'];?>"><?=$row['no_order'];?></a></td>
                     <td><?=$row['nama_pemesan'];?></td>
                     <td><?=$row['unit'];?></td>
                     <td><?= date('d-m-Y', strtotime($row['tanggal']));?></td>

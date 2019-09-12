@@ -45,15 +45,6 @@ function tampilkan_barang(){
 	return $result;
 }
 
-function tampilkan_pemesanan(){
-	global $link;
-
-	$query = "SELECT * FROM pemesanan ORDER BY id";
-	$result = mysqli_query($link, $query) or die ('gagal menampilkan list pemesanan');
-
-	return $result;
-}
-
 function tampilkan_barang_perhalaman(){
 	global $link, $awal, $per_page;
 
@@ -84,7 +75,7 @@ function tampilkan_supplier(){
 function tampilkan_penerimaan(){
 	global $link;
 
-	$query = "SELECT * FROM penerimaan ORDER BY id DESC";
+	$query = "SELECT * FROM penerimaan GROUP BY no_surat_jalan ORDER BY id DESC";
 	$result = mysqli_query($link, $query) or die ('gagal menampilkan data transaksi penerimaan');
 
 	return $result;
@@ -93,8 +84,44 @@ function tampilkan_penerimaan(){
 function tampilkan_pengeluaran(){
 	global $link;
 
-	$query = "SELECT * FROM pengeluaran ORDER BY id DESC";
+	$query = "SELECT * FROM pengeluaran GROUP BY no_surat_pengambilan ORDER BY id DESC";
 	$result = mysqli_query($link, $query) or die ('gagal menampilkan data transaksi pengeluaran');
+
+	return $result;
+}
+
+function tampilkan_pemesanan(){
+	global $link;
+
+	$query = "SELECT * FROM pemesanan GROUP BY no_order ORDER BY id";
+	$result = mysqli_query($link, $query) or die ('gagal menampilkan list pemesanan');
+
+	return $result;
+}
+
+function penerimaan_per_bulan($bulan){
+	global $link;
+
+	$query = "SELECT * FROM penerimaan WHERE MONTH(tanggal)=$bulan GROUP BY no_surat_jalan ORDER BY id DESC";
+	$result = mysqli_query($link, $query);
+
+	return $result;
+}
+
+function pengeluaran_per_bulan($bulan){
+	global $link;
+
+	$query = "SELECT * FROM pengeluaran WHERE MONTH(tanggal)=$bulan GROUP BY no_surat_pengambilan ORDER BY id DESC";
+	$result = mysqli_query($link, $query);
+
+	return $result;
+}
+
+function pemesanan_per_bulan($bulan){
+	global $link;
+
+	$query = "SELECT * FROM pemesanan WHERE MONTH(tanggal)=$bulan GROUP BY no_order ORDER BY id DESC";
+	$result = mysqli_query($link, $query);
 
 	return $result;
 }
@@ -135,12 +162,40 @@ function tampilkan_stock_opname(){
 	return $result;
 }
 
+//TAMPILKAN BY SURAT
+function tampilkan_penerimaan_by_surat($surat){
+	global $link;
+
+	$query = "SELECT * FROM penerimaan WHERE no_surat_jalan = '$surat' ORDER BY id DESC";
+	$result = mysqli_query($link, $query);
+
+	return $result;	
+}
+
+function tampilkan_pengeluaran_by_surat($surat){
+	global $link;
+
+	$query = "SELECT * FROM pengeluaran WHERE no_surat_pengambilan = '$surat' ORDER BY id DESC";
+	$result = mysqli_query($link, $query);
+
+	return $result;	
+}
+
+function tampilkan_pemesanan_by_surat($surat){
+	global $link;
+
+	$query = "SELECT * FROM pemesanan WHERE no_order = '$surat' ORDER BY id DESC";
+	$result = mysqli_query($link, $query);
+
+	return $result;	
+}
+
 //FUNGSI TAMBAH
-function tambah_barang($nama, $qty, $jenis, $num_kode, $kode){
+function tambah_barang($nama, $qty, $jenis, $num_kode, $kode, $satuan){
 	$nama  = escape($nama);
 	$qty   = escape($qty);
 
-	$query = "INSERT INTO barang (nama, stok, jenis, num_kode, kode) VALUES ('$nama', '$qty', '$jenis', '$num_kode', '$kode')";
+	$query = "INSERT INTO barang (nama, stok, jenis, num_kode, kode, satuan) VALUES ('$nama', '$qty', '$jenis', '$num_kode', '$kode', '$satuan')";
 
 	return run($query);
 }
@@ -230,10 +285,10 @@ function tambah_jenis_barang($jenis, $alpha_kode){
 }
 
 //FUNGSI TRANSAKSI
-function transaksi_barang_masuk($keterangan_penerimaan, $tanggal, $supplier, $kode_barang, $nama_barang, $jumlah, $user, $no_surat_jalan){
+function transaksi_barang_masuk($keterangan_penerimaan, $tanggal, $supplier, $kode_barang, $nama_barang, $jumlah, $user, $no_surat_jalan, $satuan){
 	$keterangan_penerimaan = escape($keterangan_penerimaan);
 
-	$query = "INSERT INTO penerimaan (keterangan, tanggal, supplier, kode_barang, barang, jumlah, user, no_surat_jalan) VALUES ('$keterangan_penerimaan', '$tanggal', '$supplier', '$kode_barang', '$nama_barang', '$jumlah', '$user', '$no_surat_jalan')";
+	$query = "INSERT INTO penerimaan (keterangan, tanggal, supplier, kode_barang, barang, jumlah, user, no_surat_jalan, satuan) VALUES ('$keterangan_penerimaan', '$tanggal', '$supplier', '$kode_barang', '$nama_barang', '$jumlah', '$user', '$no_surat_jalan', '$satuan')";
 
 	return run($query);
 }
@@ -244,11 +299,9 @@ function transaksi_pemesanan($no_order, $tanggal, $nama_pemesan, $unit, $nama_ba
 	return run($query);
 }
 
-function transaksi_barang_keluar($no_transaksi, $keterangan_pengeluaran, $tanggal, $unit, $penerima, $kode_barang, $nama_barang, $jumlah, $no_surat_pengambilan, $user){
-	$no_transaksi 		    = escape($no_transaksi);
-	$keterangan_pengeluaran = escape($keterangan_pengeluaran);
+function transaksi_barang_keluar($keterangan_pengeluaran, $tanggal, $unit, $penerima, $kode_barang, $nama_barang, $jumlah, $no_surat_pengambilan, $satuan){
 
-	$query = "INSERT INTO pengeluaran (no_transaksi, keterangan, tanggal, unit, penerima, kode_barang, barang, jumlah, no_surat_pengambilan, petugas) VALUES ('$no_transaksi', '$keterangan_pengeluaran', '$tanggal', '$unit', '$penerima', '$kode_barang', '$nama_barang', '$jumlah', '$no_surat_pengambilan', '$user')";
+	$query = "INSERT INTO pengeluaran (keterangan, tanggal, unit, penerima, kode_barang, barang, jumlah, no_surat_pengambilan, satuan) VALUES ($keterangan_pengeluaran', '$tanggal', '$unit', '$penerima', '$kode_barang', '$nama_barang', '$jumlah', '$no_surat_pengambilan', '$satuan')";
 
 	return run($query);
 }
@@ -351,33 +404,6 @@ function opname_per_bulan($bulan){
 	global $link;
 
 	$query = "SELECT * FROM stok_opname WHERE MONTH(bulan)=$bulan";
-	$result = mysqli_query($link, $query);
-
-	return $result;
-}
-
-function penerimaan_per_bulan($bulan){
-	global $link;
-
-	$query = "SELECT * FROM penerimaan WHERE MONTH(tanggal)=$bulan";
-	$result = mysqli_query($link, $query);
-
-	return $result;
-}
-
-function pengeluaran_per_bulan($bulan){
-	global $link;
-
-	$query = "SELECT * FROM pengeluaran WHERE MONTH(tanggal)=$bulan";
-	$result = mysqli_query($link, $query);
-
-	return $result;
-}
-
-function pemesanan_per_bulan($bulan){
-	global $link;
-
-	$query = "SELECT * FROM pemesanan WHERE MONTH(tanggal)=$bulan";
 	$result = mysqli_query($link, $query);
 
 	return $result;
@@ -499,13 +525,13 @@ function tampilkan_penerimaan_by_kode($kode){
 	return $result;	
 }
 
-function tampilkan_penerimaan_by_surat_jalan($no_surat_jalan){
+function tampilkan_laporan_penerimaan(){
 	global $link;
 
-	$query = "SELECT * FROM penerimaan WHERE no_surat_jalan = '$no_surat_jalan' ORDER BY id DESC";
+	$query = "SELECT MIN(id), * from penerimaan GROUP BY no_surat_jalan";
 	$result = mysqli_query($link, $query);
 
-	return $result;	
+	return $result;
 }
 
 function tampilkan_kartu_stock_by_kode($kode_barang){

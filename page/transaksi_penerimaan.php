@@ -57,7 +57,7 @@
         $stok_aktual = $stok_awal + $jumlah;
 
         if(!empty($keterangan_penerimaan) && !empty($tanggal) && !empty($supplier) && !empty($jumlah) && !empty($no_surat_jalan) && !empty($user) && !empty($nama_barang) && !empty($kode_barang) && !empty($satuan)){
-          if(transaksi_barang_masuk($keterangan_penerimaan, $tanggal, $supplier, $kode_barang, $nama_barang, $jumlah, $user, $no_surat_jalan)){
+          if(transaksi_barang_masuk($keterangan_penerimaan, $tanggal, $supplier, $kode_barang, $nama_barang, $jumlah, $user, $no_surat_jalan, $satuan)){
             if(tambah_stok_barang($stok_aktual, $kode_barang)){
               if(tambah_kartu_stock($nama_barang, $tanggal, $kode_barang, $keterangan_penerimaan, $jumlah, $keluar, $stok_aktual, $pengguna)){
                 if(mysqli_num_rows(cek_barang_opname($kode_barang, $tanggal)) > 0){
@@ -96,31 +96,24 @@
       ?>
       <main>
 
-        <div class="row">
+        <div class="row center">
           <div class="col s12">
             <h4><b>TRANSAKSI PENERIMAAN BARANG</b></h4>
           </div>
         </div>
 
-        <form action="" method="post" class="transaksiw">
-          <div class="row">
-            <div class="col s12">  
+        <div class="row">
+        <form action="" method="post" class="col s12 z-depth-5">
               <div class="input-field col s6">
                 <label for="no_surat_jalan">No Surat Jalan</label>
                 <input name="no_surat_jalan" type="text" class="validate">
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12">
+            
               <div class="input-field col s6">
                 <label for="tanggal">Tanggal</label>
                 <input name="tanggal" type="date" class="validate" id="tglSekarang">
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12">
+            
               <div class="input-field col s6">
                 <select name="supplier" type="text" class="validate selek">
                   <option value="" disabled selected>Pilih Pemasok</option>
@@ -130,18 +123,12 @@
                 </select>
                 <label for="supplier">Pemasok</label>
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12">  
+              
               <div class="input-field col s6">
                 <label for="penerima">Penerima</label>
                 <input name="penerima" type="text" class="validate">
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12">
+            
               <div class="input-field col s6">
                 <select name="nama_barang" type="text" class="validate selek">
                   <option value="" disabled selected>Pilih Barang</option>
@@ -151,35 +138,25 @@
                 </select>
                 <label for="nama_barang">Barang</label>
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12">
+            
               <div class="input-field col s6">
                 <label for="jumlah">Jumlah</label>
                 <input name="jumlah" type="number" class="validate">
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12">
+            
               <div class="input-field col s6">
                 <label for="keterangan_penerimaan">Keterangan</label>
                 <input name="keterangan_penerimaan" type="text" class="validate">
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12">
+            
+            <div class="col s6">
               <button class="btn waves-effect waves-light" type="submit" name="submit">Simpan
                 <i class="material-icons left">send</i>
               </button>
-              <button class="btn red waves-effect waves-light" type="reset">Batal
-                <i class="material-icons left">clear</i>
-              </button>
             </div>
-          </div>
+            
         </form>
+        </div>
 
       </main>
 

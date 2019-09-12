@@ -113,7 +113,7 @@
                   <?php while($row = mysqli_fetch_assoc($penerimaan)):?>
                   <tr>
                     <td><?=$nourut++;?></td>
-                    <td><a href="detail_penerimaan.php?suratjalan=<?=$row['no_surat_jalan'];?>"><?=$row['no_surat_jalan'];?></a></td>
+                    <td><a href="detail_penerimaan.php?surat=<?=$row['no_surat_jalan'];?>"><?=$row['no_surat_jalan'];?></a></td>
                     <td><?=$row['supplier'];?></td>
                     <td><?=$row['keterangan'];?></td>
                     <td><?=$row['user'];?></td>

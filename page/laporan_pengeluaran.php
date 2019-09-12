@@ -112,7 +112,7 @@
                   <?php while($row = mysqli_fetch_assoc($pengeluaran)):?>
                   <tr>
                     <td><?=$nourut++;?></td>
-                    <td><?=$row['no_surat_pengambilan'];?></td>
+                    <td><a href="detail_pengeluaran.php?surat=<?=$row['no_surat_pengambilan'];?>"><?=$row['no_surat_pengambilan'];?></a></td>
                     <td><?=$row['penerima'];?></td>
                     <td><?=$row['unit'];?></td>
                     <td><?= date('d-m-Y', strtotime($row['tanggal']));?></td>

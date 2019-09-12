@@ -13,6 +13,25 @@
         require_once "../aset/view/header.php";
         require_once "../fungsi/db.php";
         require_once "../fungsi/fungsi.php";
+        
+        //SETTING FUNGSI
+        $surat = $_GET['surat'];
+
+        if(isset($_GET['surat'])){
+            $detaiw = tampilkan_penerimaan_by_surat($surat);
+            $detail = tampilkan_penerimaan_by_surat($surat);
+            while ($row = mysqli_fetch_assoc($detail)){
+                $no = 1;
+                $tanggal = $row['tanggal'];
+                $penerima = $row['user'];
+                $nosuratjalan = $row['no_surat_jalan'];
+                $pemasok = $row['supplier'];
+                $namabarang = $row['barang'];
+                $jumlah = $row['jumlah'];
+                $satuan = $row['satuan'];
+                $keterangan = $row['keterangan'];
+            }
+        }
         ?>
 
         <main>    
@@ -30,15 +49,11 @@
                     <table class="tablestokbarang">
                         <tr>
                             <th>Tanggal</th>
-                            <td>tanggal</td>
+                            <td><?=date('d-m-Y', strtotime($tanggal));?></td>
                         </tr>
                         <tr>
                             <th>Penerima</th>
-                            <td>penerima</td>
-                        </tr>
-                        <tr>
-                            <th>Bagian</th>
-                            <td>bagian</td>
+                            <td><?=$penerima;?></td>
                         </tr>
                     </table>
                 </div>
@@ -47,11 +62,11 @@
                     <table class="tablestokbarang">
                         <tr>
                             <th>No. Surat Jalan</th>
-                            <td>no surat jalan</td>
+                            <td><?=$nosuratjalan;?></td>
                         </tr>
                         <tr>
                             <th>Pemasok</th>
-                            <td>pemasok</td>
+                            <td><?=$pemasok;?></td>
                         </tr>
                     </table>
                 </div>
@@ -71,13 +86,15 @@
                 </thead>
 
                 <tbody>
+                <?php while($riw = mysqli_fetch_assoc($detaiw)):?>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><?=$no++;?></td>
+                        <td><?=$riw['barang'];?></td>
+                        <td><?=$riw['jumlah'];?></td>
+                        <td><?=$riw['satuan'];?></td>
+                        <td><?=$riw['keterangan'];?></td>
                     </tr>
+                <?php endwhile;?>
                 </tbody>
                 </table>
             </div>

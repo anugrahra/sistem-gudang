@@ -13,11 +13,30 @@
         require_once "../aset/view/header.php";
         require_once "../fungsi/db.php";
         require_once "../fungsi/fungsi.php";
+        
+        //SETTING FUNGSI
+        $surat = $_GET['surat'];
+
+        if(isset($_GET['surat'])){
+            $detail = tampilkan_pengeluaran_by_surat($surat);
+            $detaiw = tampilkan_pengeluaran_by_surat($surat);
+            while ($riw = mysqli_fetch_assoc($detaiw)){
+                $no = 1;
+                $tanggal = $riw['tanggal'];
+                $pengambil = $riw['penerima'];
+                $nopengambilan = $riw['no_surat_pengambilan'];
+                $bagian = $riw['unit'];
+                $namabarang = $riw['barang'];
+                $jumlah = $riw['jumlah'];
+                $satuan = $riw['satuan'];
+                $keterangan = $riw['keterangan'];
+            }
+        }
         ?>
 
         <main>
 
-        <div class="row">
+        <div class="row center">
             <div class="col s12">
                 <h4><b>DETAIL PENGELUARAN</b></h4>
             </div>
@@ -30,15 +49,15 @@
                     <table class="tablestokbarang">
                         <tr>
                             <th>Tanggal</th>
-                            <td>tanggal</td>
+                            <td><?=date('d-m-Y', strtotime($tanggal));?></td>
                         </tr>
                         <tr>
                             <th>Pengambil</th>
-                            <td>pengambil</td>
+                            <td><?=$pengambil;?></td>
                         </tr>
                         <tr>
                             <th>Bagian</th>
-                            <td>bagian</td>
+                            <td><?=$bagian;?></td>
                         </tr>
                     </table>
                 </div>
@@ -47,7 +66,7 @@
                     <table class="tablestokbarang">
                         <tr>
                             <th>No. Pengambilan Barang</th>
-                            <td>no pengambilan barang</td>
+                            <td><?=$nopengambilan;?></td>
                         </tr>
                     </table>
                 </div>
@@ -67,13 +86,15 @@
                 </thead>
 
                 <tbody>
+                <?php while($row = mysqli_fetch_assoc($detail)):?>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><?=$no++;?></td>
+                        <td><?=$row['barang'];?></td>
+                        <td><?=$row['jumlah'];?></td>
+                        <td><?=$row['satuan'];?></td>
+                        <td><?=$row['keterangan'];?></td>
                     </tr>
+                <?php endwhile;?>
                 </tbody>
                 </table>
             </div>

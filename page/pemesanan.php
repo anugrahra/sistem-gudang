@@ -63,7 +63,8 @@
 
             //Recipients
             $mail->setFrom('elang.uptdam@gmail.com', 'Elang UPTD AM Kota Cimahi');
-            $mail->addAddress('dialog.anugrah@gmail.com');     // Add a recipient
+            $mail->addAddress('hendriannnn@gmail.com');
+            $mail->addCC('dialog.anugrah@gmail.com');
             $mail->addReplyTo('elang.uptdam@gmail.com', 'Elang');
 
             // Content
@@ -91,39 +92,30 @@
       ?>
       <main>
 
-        <div class="row">
+        <div class="row center">
           <div class="col s12">
             <h4><b>PEMESANAN BARANG</b></h4>
           </div>
         </div>
 
-        <form action="" method="post">
-          <div class="row">
-            <div class="col s12">  
+        <div class="row">
+        <form action="" method="post" class="col s12 z-depth-5">
+            
               <div class="input-field col s6">
                 <label for="no_order">No Order</label>
                 <input name="no_order" type="text" class="validate">
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12">  
+          
               <div class="input-field col s6">
                 <label for="tanggal">Tanggal</label>
                 <input name="tanggal" type="date" class="validate" id="tglSekarang">
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12">  
+
               <div class="input-field col s6">
                 <label for="nama_pemesan">Pemesan</label>
                 <input name="nama_pemesan" type="text" class="validate">
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12">
+          
               <div class="input-field col s6">
                 <select name="unit" type="text" class="validate selek">
                   <option value="" disabled selected>Pilih Bagian</option>
@@ -133,42 +125,28 @@
                 </select>
                 <label for="supplier">Bagian</label>
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12">
+          
               <div class="input-field col s6">
                 <label for="nama_barang">Nama Barang</label>
                 <input name="nama_barang" type="text" class="validate">
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12">
+          
               <div class="input-field col s6">
                 <label for="jumlah">Jumlah</label>
                 <input name="jumlah" type="number" class="validate">
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12">
+          
               <div class="input-field col s6">
                 <label for="satuan">Satuan</label>
                 <input name="satuan" type="text" class="validate">
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12">
+          
               <div class="input-field col s6">
                 <label for="keterangan">Keterangan</label>
                 <input name="keterangan" type="text" class="validate">
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12">
+
+            <div class="col s12 center" style="margin-bottom: 10px;">
               <button class="btn waves-effect waves-light" type="submit" name="submit">Pesan
                 <i class="material-icons left">send</i>
               </button>
@@ -176,9 +154,9 @@
                 <i class="material-icons left">clear</i>
               </a>
             </div>
-          </div>
+          
         </form>
-
+        </div>
       </main>
 
       <?php

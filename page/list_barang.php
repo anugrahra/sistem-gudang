@@ -41,6 +41,7 @@
         $nama = $_POST['nama'];
         $qty  = $_POST['qty'];
         $jenis = $_POST['jenis'];
+        $satuan = $_POST['satuan'];
 
         //MENENTUKAN ALPHA_KODE JENIS BARANG
         if($jenis == 'AKSESORIS'){
@@ -71,8 +72,8 @@
         $kode = $alpha_kode.$nol.$num_kode;
 
         //MENGIRIM DATA BARANG KE DATABASE
-        if(!empty($nama) && !empty($qty) && !empty($jenis)){
-          if(tambah_barang($nama, $qty, $jenis, $num_kode, $kode)){
+        if(!empty($nama) && !empty($jenis) && !empty($satuan)){
+          if(tambah_barang($nama, $qty, $jenis, $num_kode, $kode, $satuan)){
             header('location: list_barang.php');
           }else{
             echo "<script>alert('Ada masalah ketika menambah data barang!');</script>";
@@ -135,6 +136,14 @@
               <div class="input-field col s6">
                 <label for="qty">Stok Awal</label>
                 <input name="qty" type="number" class="validate">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <div class="input-field col s6">
+                <label for="satuan">Satuan</label>
+                <input name="satuan" type="text" class="validate">
               </div>
             </div>
           </div>
