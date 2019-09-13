@@ -102,7 +102,7 @@
     <div class="row">
         <div class="center">
         <div class="col s12">
-            <a href="" class="btn waves-effect waves-light">Stok Opname
+            <a href="stock_opname.php" class="btn waves-effect waves-light">Stok Opname
                 <i class="material-icons left">keyboard_backspace</i>
             </a>
             <button class="btn waves-effect waves-light" onclick="printContent('cetakLaporan')">Print PDF
