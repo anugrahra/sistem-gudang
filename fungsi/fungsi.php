@@ -210,24 +210,45 @@ function cek_barang_opname($kode_barang, $tanggal){
 	return $result;
 }
 
-function tambah_stok_opname($nama_barang, $kode_barang, $satuan, $saldo_awal, $masuk, $keluar, $saldo_akhir, $keterangan, $tanggal){
-	$query = "INSERT INTO stok_opname (nama_barang, kode_barang, satuan, saldo_awal, masuk, keluar, saldo_akhir, keterangan, bulan) VALUES ('$nama_barang', '$kode_barang', '$satuan', '$saldo_awal', '$masuk', '$keluar', '$saldo_akhir', '$keterangan', '$tanggal')";
+function tambah_stok_opname($nama_barang, $kode_barang, $satuan, $masuk, $keluar, $saldo_akhir, $tanggal){
+	$query = "INSERT INTO stok_opname (nama_barang, kode_barang, satuan, masuk, keluar, saldo_akhir, bulan) VALUES ('$nama_barang', '$kode_barang', '$satuan', '$masuk', '$keluar', '$saldo_akhir', '$tanggal')";
 
 	return run($query);
 }
 
-function update_stok_opname_terima($saldo_awal, $masuk, $saldo_akhir, $kode_barang, $tanggal){
+function update_stok_opname_terima($masuk, $saldo_akhir, $kode_barang, $tanggal){
 	$bulan = date("m", strtotime($tanggal));
 
-	$query = "UPDATE stok_opname SET saldo_awal='$saldo_awal', masuk= masuk + '$masuk', saldo_akhir='$saldo_akhir' WHERE kode_barang = '$kode_barang' AND MONTH(bulan) = '$bulan'";
+	$query = "UPDATE stok_opname SET masuk= masuk + '$masuk', saldo_akhir='$saldo_akhir' WHERE kode_barang = '$kode_barang' AND MONTH(bulan) = '$bulan'";
 
 	return run($query);
 }
 
-function update_stok_opname_keluar($saldo_awal, $keluar, $saldo_akhir, $kode_barang, $tanggal){
+function update_stok_opname_keluar($keluar, $saldo_akhir, $kode_barang, $tanggal){
 	$bulan = date("m", strtotime($tanggal));
 
-	$query = "UPDATE stok_opname SET saldo_awal='$saldo_awal', keluar = keluar + '$keluar', saldo_akhir='$saldo_akhir' WHERE kode_barang = '$kode_barang' AND MONTH(bulan) = '$bulan'";
+	$query = "UPDATE stok_opname SET keluar = keluar + '$keluar', saldo_akhir='$saldo_akhir' WHERE kode_barang = '$kode_barang' AND MONTH(bulan) = '$bulan'";
+
+	return run($query);
+}
+
+function opname_per_id($id){
+	global $link;
+
+	$query = "SELECT * FROM stok_opname WHERE id=$id";
+	$result = mysqli_query($link, $query);
+
+	return $result;
+}
+
+function update_saldo_awal_opname($id, $saldo_awal){
+	$query = "UPDATE stok_opname SET saldo_awal = '$saldo_awal' WHERE id = $id";
+
+	return run($query);
+}
+
+function update_keterangan_opname($id, $keterangan){
+	$query = "UPDATE stok_opname SET keterangan = '$keterangan' WHERE id = $id";
 
 	return run($query);
 }

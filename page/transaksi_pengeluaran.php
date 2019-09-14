@@ -30,9 +30,6 @@
       $masuk = 0;
       $pengguna = '';
 
-      //STOCK OPNAME
-      $saldo_awal = 0;
-
       if(isset($_POST['submit'])){
         $keterangan_pengeluaran = $_POST['keterangan_pengeluaran'];
         $tanggal                = $_POST['tanggal'];
@@ -60,7 +57,7 @@
             if(tambah_stok_barang($stok_aktual, $kode_barang)){
               if(tambah_kartu_stock($nama_barang, $tanggal, $kode_barang, $keterangan_pengeluaran, $masuk, $jumlah, $stok_aktual, $unit)){
                 if(mysqli_num_rows(cek_barang_opname($kode_barang, $tanggal)) > 0){
-                  if(update_stok_opname_keluar($saldo_awal, $jumlah, $stok_aktual, $kode_barang, $tanggal)){
+                  if(update_stok_opname_keluar($jumlah, $stok_aktual, $kode_barang, $tanggal)){
                     echo "<script>";
                     echo "alert('Transaksi pengeluaran barang berhasil!');"; 
                     echo "window.location.href = 'laporan_pengeluaran.php';";
@@ -69,7 +66,7 @@
                     echo "<script>alert('Gagal update stock opname!');</script>";  
                   }
                 } else {
-                  if(tambah_stok_opname($nama_barang, $kode_barang, $satuan, $saldo_awal, $masuk, $jumlah, $stok_aktual, $keterangan_pengeluaran, $tanggal)){
+                  if(tambah_stok_opname($nama_barang, $kode_barang, $satuan, $masuk, $jumlah, $stok_aktual, $tanggal)){
                     echo "<script>";
                     echo "alert('Transaksi pengeluaran barang berhasil!');"; 
                     echo "window.location.href = 'laporan_pengeluaran.php';";

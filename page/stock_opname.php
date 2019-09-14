@@ -69,13 +69,13 @@
             <div class="col s2">
               <select type="text" class="validate selek" name="bulan">
                 <option value="" disabled selected>Pilih Bulan</option>
-                <option value="01">Januari</option>
+                <!-- <option value="01">Januari</option>
                 <option value="02">Februari</option>
                 <option value="03">Maret</option>
                 <option value="04">April</option>
                 <option value="05">Mei</option>
                 <option value="06">Juni</option>
-                <option value="07">Juli</option>
+                <option value="07">Juli</option> -->
                 <option value="08">Agustus</option>
                 <option value="09">September</option>
                 <option value="10">Oktober</option>
@@ -97,12 +97,19 @@
               <?='<b>' . $namabulan . '</b><br><br>';?>
               <table class="highlight responsive-table centered opname">
                 <thead>
+                <?php
+                  $dispelayiw = '';
+                  if ( $_SESSION['username'] !== 'Administrator') {
+                    $dispelayiw = 'none';
+                  }
+                ?>
                   <tr>
                     <th rowspan="2" class="center">No</th>
                     <th rowspan="2" class="center">Nama Barang</th>
                     <th rowspan="2" class="center">Satuan</th>
                     <th colspan="4" class="center">Volume</th>
                     <th rowspan="2" class="center">Keterangan</th>
+                    <th rowspan="2" colspan="3" style="display:<?=$dispelayiw;?>;">Admin</th>
                   </tr>
                   <tr>
                     <th class="center">Saldo Awal</th>
@@ -113,16 +120,30 @@
                 </thead>
 
                 <tbody>
-                  <?php while($row = mysqli_fetch_assoc($stock_opname)): ?>
+                  <?php while($row = mysqli_fetch_assoc($stock_opname)):
+                  $dispelay = '';
+                  if ( $_SESSION['username'] !== 'Administrator') {
+                    $dispelay = 'none';
+                  }
+                  
+                  $syaldo_awal = $row['saldo_awal']; 
+
+                  if ($syaldo_awal == 0) {
+                    $syaldo_awal = '';
+                  }
+                  ?>
                   <tr>
                     <td><?=$nourut++;?></td>
                     <td><a href="kartu_stock.php?kode=<?=$row['kode_barang'];?>"><?=$row['nama_barang'];?></a></td>
                     <td><?=$row['satuan'];?></td>
-                    <td><?=$row['saldo_awal'];?></td>
+                    <td><?=$syaldo_awal;?></td>
                     <td><?=$row['masuk'];?></td>
                     <td><?=$row['keluar'];?></td>
                     <td><?=$row['saldo_akhir'];?></td>
                     <td><?=$row['keterangan'];?></td>
+                    <td style="display:<?=$dispelayiw;?>;"><?= date('M', strtotime($row['bulan']));?></td>
+                    <td style="display:<?=$dispelayiw;?>;"><a href="opname_saldo_awal.php?id=<?=$row['id'];?>" style="display:<?=$dispelay;?>;">input saldo awal</a></td>
+                    <td style="display:<?=$dispelayiw;?>;"><a href="opname_keterangan.php?id=<?=$row['id'];?>" style="display:<?=$dispelay;?>;">input keterangan</a></td>
                   </tr>
                   <?php endwhile;?>
                 </tbody>
@@ -138,6 +159,9 @@
               <button class="btn waves-effect waves-light" onclick="printContent('cetakLaporan')">Print PDF
                 <i class="material-icons left">picture_as_pdf</i>
               </button>
+              <a class="btn lighten-1 waves-effect waves-light" href="opname_input_saldo_awal_keterangan.php">Admin
+                <i class="material-icons left">clear</i>
+              </a>
             </div>
           </div>
         </div>
