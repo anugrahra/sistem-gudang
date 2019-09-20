@@ -44,14 +44,16 @@
         $satuan = $_POST['satuan'];
 
         //MENENTUKAN ALPHA_KODE JENIS BARANG
-        if($jenis == 'AKSESORIS'){
-          $alpha_kode = 'AC';
-        }elseif($jenis == 'PERPIPAAN'){
-          $alpha_kode = 'PP';
+        if($jenis == 'PERALATAN KERJA'){
+          $alpha_kode = 'PK';
+        }elseif($jenis == 'PERALATAN MESIN DAN LISTRIK'){
+          $alpha_kode = 'ML';
         }elseif($jenis == 'BAHAN KIMIA'){
           $alpha_kode = 'KM';
-        }elseif ($jenis == 'ASET'){
-          $alpha_kode = 'ST';
+        }elseif ($jenis == 'BAHAN BANGUNAN'){
+          $alpha_kode = 'BN';
+        }elseif ($jenis == 'MATERIAL'){
+          $alpha_kode = 'MT';
         }else{
           $alpha_kode = 'LL';
         }

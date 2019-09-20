@@ -185,7 +185,7 @@ function tampilkan_pemesanan_by_surat($surat){
 function tampilkan_stock_opname(){
 	global $link;
 
-	$query = "SELECT * FROM stok_opname";
+	$query = "SELECT * FROM stok_opname ORDER BY bulan DESC";
 	$result = mysqli_query($link, $query) or die ('gagal menampilkan data stock opname');
 
 	return $result;
