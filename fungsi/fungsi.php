@@ -75,7 +75,7 @@ function tampilkan_supplier(){
 function tampilkan_penerimaan(){
 	global $link;
 
-	$query = "SELECT * FROM penerimaan GROUP BY no_surat_jalan ORDER BY id DESC";
+	$query = "SELECT * FROM penerimaan GROUP BY no_surat_jalan ORDER BY tanggal DESC";
 	$result = mysqli_query($link, $query) or die ('gagal menampilkan data transaksi penerimaan');
 
 	return $result;
@@ -542,7 +542,7 @@ function tampilkan_penerimaan_by_kode($kode){
 function tampilkan_laporan_penerimaan(){
 	global $link;
 
-	$query = "SELECT MIN(id), * from penerimaan GROUP BY no_surat_jalan";
+	$query = "SELECT MIN(id), * from penerimaan GROUP BY no_surat_jalan ORDER BY tanggal DESC";
 	$result = mysqli_query($link, $query);
 
 	return $result;
@@ -551,7 +551,7 @@ function tampilkan_laporan_penerimaan(){
 function tampilkan_kartu_stock_by_kode($kode_barang){
 	global $link;
 
-	$query = "SELECT * FROM kartu_stock WHERE kode_barang = '$kode_barang'";
+	$query = "SELECT * FROM kartu_stock WHERE kode_barang = '$kode_barang' ORDER BY tanggal DESC";
 	$result = mysqli_query($link, $query);
 
 	return $result;

@@ -74,8 +74,8 @@
                 <option value="03">Maret</option>
                 <option value="04">April</option>
                 <option value="05">Mei</option>
-                <option value="06">Juni</option>
-                <option value="07">Juli</option> -->
+                <option value="06">Juni</option> -->
+                <option value="07">Juli</option>
                 <option value="08">Agustus</option>
                 <option value="09">September</option>
                 <option value="10">Oktober</option>

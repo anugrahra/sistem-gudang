@@ -69,13 +69,13 @@
             <div class="col s2">
               <select type="text" class="validate selek" name="bulan">
                 <option value="" disabled selected>Pilih Bulan</option>
-                <option value="">SEMUA</option>
+                <!-- <option value="00">SEMUA</option>
                 <option value="01">Januari</option>
                 <option value="02">Februari</option>
                 <option value="03">Maret</option>
                 <option value="04">April</option>
                 <option value="05">Mei</option>
-                <option value="06">Juni</option>
+                <option value="06">Juni</option> -->
                 <option value="07">Juli</option>
                 <option value="08">Agustus</option>
                 <option value="09">September</option>
